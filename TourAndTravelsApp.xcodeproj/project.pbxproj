@@ -14,18 +14,18 @@
 		210E45D5213660E900D60AE6 /* DepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E45D3213660E900D60AE6 /* DepartureCell.swift */; };
 		210E45D6213660E900D60AE6 /* DepartureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 210E45D4213660E900D60AE6 /* DepartureCell.xib */; };
 		210EFECF21415BE900B51BF8 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EFECE21415BE900B51BF8 /* SearchVC.swift */; };
+		2114E7F12146528C001761B6 /* NewLoginVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114E7F02146528C001761B6 /* NewLoginVc.swift */; };
+		2114E7F3214687AC001761B6 /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114E7F2214687AC001761B6 /* OtpVC.swift */; };
+		2114E7F521469830001761B6 /* NewSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114E7F421469830001761B6 /* NewSignUpVC.swift */; };
 		2124474621422DCD0002AFF1 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124474521422DCC0002AFF1 /* Checkbox.swift */; };
 		2124474A21423F1D0002AFF1 /* CheckBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124474921423F1D0002AFF1 /* CheckBoxCell.swift */; };
 		2124E3C12137CCDF00182399 /* HotelCheckinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124E3BF2137CCDF00182399 /* HotelCheckinCell.swift */; };
 		2124E3C22137CCDF00182399 /* HotelCheckinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2124E3C02137CCDF00182399 /* HotelCheckinCell.xib */; };
-		21291B78213674D50001BA7D /* SearchCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21291B77213674D50001BA7D /* SearchCityVC.swift */; };
 		21291B7A21367ADF0001BA7D /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21291B7921367ADF0001BA7D /* SearchCityCell.swift */; };
 		21291B7C213681CC0001BA7D /* CityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21291B7B213681CC0001BA7D /* CityResponse.swift */; };
 		212AE760213FC3630091DEAE /* HotelListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212AE75F213FC3630091DEAE /* HotelListCell.swift */; };
 		212AE762213FC3810091DEAE /* HotelGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212AE761213FC3810091DEAE /* HotelGridCell.swift */; };
 		212B72B721356E1E00B80A60 /* FullScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212B72B621356E1E00B80A60 /* FullScheduleVC.swift */; };
-		213AD658212FBBD000B67567 /* ExpandSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AD657212FBBD000B67567 /* ExpandSearchVC.swift */; };
-		213AD65A212FBF3500B67567 /* ExpandSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AD659212FBF3500B67567 /* ExpandSearchCell.swift */; };
 		213AD662213015A600B67567 /* KTCenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 213AD660213015A600B67567 /* KTCenterFlowLayout.m */; };
 		213C7B47213E696A00D34871 /* FulliternityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C7B46213E696A00D34871 /* FulliternityVC.swift */; };
 		213C7B49213E6BC200D34871 /* TableChildExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C7B48213E6BC200D34871 /* TableChildExampleViewController.swift */; };
@@ -35,8 +35,6 @@
 		21672ADD212E795900F1F6C1 /* PackageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21672ADC212E795900F1F6C1 /* PackageDetailVC.swift */; };
 		21672AE7212E928800F1F6C1 /* PackageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21672AE6212E928800F1F6C1 /* PackageListCell.swift */; };
 		21672AE9212E930A00F1F6C1 /* PackageDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21672AE8212E930A00F1F6C1 /* PackageDetailCell.swift */; };
-		21672AEB212E9FD300F1F6C1 /* ImageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21672AEA212E9FD300F1F6C1 /* ImageListVC.swift */; };
-		21672AED212EB6D200F1F6C1 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21672AEC212EB6D200F1F6C1 /* ImageListCell.swift */; };
 		217067DB212BEA020003E665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217067D9212BEA020003E665 /* LaunchScreen.storyboard */; };
 		217067E6212BEA030003E665 /* TourAndTravelsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217067E5212BEA030003E665 /* TourAndTravelsAppTests.swift */; };
 		217067F1212BEA030003E665 /* TourAndTravelsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217067F0212BEA030003E665 /* TourAndTravelsAppUITests.swift */; };
@@ -48,7 +46,6 @@
 		2170680F212BEABB0003E665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2170680E212BEABA0003E665 /* Assets.xcassets */; };
 		21706811212BEADB0003E665 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21706810212BEADB0003E665 /* Main.storyboard */; };
 		21706813212BEDE50003E665 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21706812212BEDE50003E665 /* GoogleService-Info.plist */; };
-		21901F64212D1D330050DB7C /* SearchDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F63212D1D330050DB7C /* SearchDestinationVC.swift */; };
 		21901F68212D24180050DB7C /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F65212D24180050DB7C /* CollapsibleTableViewHeader.swift */; };
 		21901F69212D24180050DB7C /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F66212D24180050DB7C /* ExampleData.swift */; };
 		21901F6A212D24180050DB7C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F67212D24180050DB7C /* Extensions.swift */; };
@@ -97,18 +94,18 @@
 		210E45D3213660E900D60AE6 /* DepartureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureCell.swift; sourceTree = "<group>"; };
 		210E45D4213660E900D60AE6 /* DepartureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureCell.xib; sourceTree = "<group>"; };
 		210EFECE21415BE900B51BF8 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		2114E7F02146528C001761B6 /* NewLoginVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginVc.swift; sourceTree = "<group>"; };
+		2114E7F2214687AC001761B6 /* OtpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
+		2114E7F421469830001761B6 /* NewSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSignUpVC.swift; sourceTree = "<group>"; };
 		2124474521422DCC0002AFF1 /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		2124474921423F1D0002AFF1 /* CheckBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCell.swift; sourceTree = "<group>"; };
 		2124E3BF2137CCDF00182399 /* HotelCheckinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelCheckinCell.swift; sourceTree = "<group>"; };
 		2124E3C02137CCDF00182399 /* HotelCheckinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotelCheckinCell.xib; sourceTree = "<group>"; };
-		21291B77213674D50001BA7D /* SearchCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityVC.swift; sourceTree = "<group>"; };
 		21291B7921367ADF0001BA7D /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		21291B7B213681CC0001BA7D /* CityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityResponse.swift; sourceTree = "<group>"; };
 		212AE75F213FC3630091DEAE /* HotelListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelListCell.swift; sourceTree = "<group>"; };
 		212AE761213FC3810091DEAE /* HotelGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelGridCell.swift; sourceTree = "<group>"; };
 		212B72B621356E1E00B80A60 /* FullScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScheduleVC.swift; sourceTree = "<group>"; };
-		213AD657212FBBD000B67567 /* ExpandSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandSearchVC.swift; sourceTree = "<group>"; };
-		213AD659212FBF3500B67567 /* ExpandSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandSearchCell.swift; sourceTree = "<group>"; };
 		213AD660213015A600B67567 /* KTCenterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTCenterFlowLayout.m; sourceTree = "<group>"; };
 		213AD661213015A600B67567 /* KTCenterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTCenterFlowLayout.h; sourceTree = "<group>"; };
 		213C7B46213E696A00D34871 /* FulliternityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulliternityVC.swift; sourceTree = "<group>"; };
@@ -120,8 +117,6 @@
 		21672ADC212E795900F1F6C1 /* PackageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDetailVC.swift; sourceTree = "<group>"; };
 		21672AE6212E928800F1F6C1 /* PackageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListCell.swift; sourceTree = "<group>"; };
 		21672AE8212E930A00F1F6C1 /* PackageDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDetailCell.swift; sourceTree = "<group>"; };
-		21672AEA212E9FD300F1F6C1 /* ImageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListVC.swift; sourceTree = "<group>"; };
-		21672AEC212EB6D200F1F6C1 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		217067CD212BEA010003E665 /* TourAndTravelsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourAndTravelsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217067DA212BEA020003E665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		217067DC212BEA020003E665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,7 +136,6 @@
 		2170680E212BEABA0003E665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21706810212BEADB0003E665 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		21706812212BEDE50003E665 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		21901F63212D1D330050DB7C /* SearchDestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDestinationVC.swift; sourceTree = "<group>"; };
 		21901F65212D24180050DB7C /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		21901F66212D24180050DB7C /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		21901F67212D24180050DB7C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -295,8 +289,10 @@
 		2170680D212BEA970003E665 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2114E7F421469830001761B6 /* NewSignUpVC.swift */,
+				2114E7F02146528C001761B6 /* NewLoginVc.swift */,
+				2114E7F2214687AC001761B6 /* OtpVC.swift */,
 				217067FF212BEA430003E665 /* ViewController.swift */,
-				21291B77213674D50001BA7D /* SearchCityVC.swift */,
 				21706800212BEA440003E665 /* MainVC.swift */,
 				210906EE212C215B00CB49B2 /* SignUpVC.swift */,
 				210906E6212BEFB400CB49B2 /* LoginVC.swift */,
@@ -305,9 +301,6 @@
 				21901F72212D7AB80050DB7C /* PackagesListVC.swift */,
 				21672ADC212E795900F1F6C1 /* PackageDetailVC.swift */,
 				212B72B621356E1E00B80A60 /* FullScheduleVC.swift */,
-				21901F63212D1D330050DB7C /* SearchDestinationVC.swift */,
-				21672AEA212E9FD300F1F6C1 /* ImageListVC.swift */,
-				213AD657212FBBD000B67567 /* ExpandSearchVC.swift */,
 				21DDF2EF213CF174004FA1EA /* ProfileVC.swift */,
 				21DDF2F1213D152E004FA1EA /* PopularPackgesVC.swift */,
 				213C7B46213E696A00D34871 /* FulliternityVC.swift */,
@@ -325,9 +318,7 @@
 				2124E3C02137CCDF00182399 /* HotelCheckinCell.xib */,
 				210E45D3213660E900D60AE6 /* DepartureCell.swift */,
 				210E45D4213660E900D60AE6 /* DepartureCell.xib */,
-				213AD659212FBF3500B67567 /* ExpandSearchCell.swift */,
 				21901F6C212D244A0050DB7C /* CollapsibleTableViewCell.swift */,
-				21672AEC212EB6D200F1F6C1 /* ImageListCell.swift */,
 				21672AE8212E930A00F1F6C1 /* PackageDetailCell.swift */,
 				21ADC64D2133C722006BF58F /* DetailviewCell.swift */,
 				21672AE6212E928800F1F6C1 /* PackageListCell.swift */,
@@ -572,14 +563,12 @@
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -594,32 +583,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TourAndTravelsApp/Pods-TourAndTravelsApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVPinView/SVPinView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXParallaxHeader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPinView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
@@ -653,8 +632,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213AD658212FBBD000B67567 /* ExpandSearchVC.swift in Sources */,
-				21672AEB212E9FD300F1F6C1 /* ImageListVC.swift in Sources */,
 				21706805212BEA540003E665 /* AppDelegate.swift in Sources */,
 				214C608621301AA800A7A9D9 /* KTAwesomeCell.m in Sources */,
 				21EDCBE62143CC500006EB58 /* UserMerResponse.swift in Sources */,
@@ -672,9 +649,9 @@
 				21ADC6532133D92B006BF58F /* RegisterResponse.swift in Sources */,
 				21901F69212D24180050DB7C /* ExampleData.swift in Sources */,
 				21DDF2F0213CF174004FA1EA /* ProfileVC.swift in Sources */,
+				2114E7F12146528C001761B6 /* NewLoginVc.swift in Sources */,
 				21402A9421427FFE001ED099 /* ThemeList.swift in Sources */,
 				210906EF212C215B00CB49B2 /* SignUpVC.swift in Sources */,
-				21672AED212EB6D200F1F6C1 /* ImageListCell.swift in Sources */,
 				21EDCBE42143CBF00006EB58 /* FavouriteLstVc.swift in Sources */,
 				2124E3C12137CCDF00182399 /* HotelCheckinCell.swift in Sources */,
 				21CCFEF32137D1AA00DA6E5D /* DetailCellHistory.swift in Sources */,
@@ -682,7 +659,6 @@
 				210906E9212BF0E200CB49B2 /* webservices.swift in Sources */,
 				210906E7212BEFB400CB49B2 /* LoginVC.swift in Sources */,
 				210E45D5213660E900D60AE6 /* DepartureCell.swift in Sources */,
-				213AD65A212FBF3500B67567 /* ExpandSearchCell.swift in Sources */,
 				2170680A212BEA660003E665 /* SWRevealViewController.m in Sources */,
 				21ADC64E2133C722006BF58F /* DetailviewCell.swift in Sources */,
 				21291B7C213681CC0001BA7D /* CityResponse.swift in Sources */,
@@ -692,14 +668,14 @@
 				21706803212BEA440003E665 /* MainVC.swift in Sources */,
 				2146638C2136A0B8009D9770 /* PackageList.swift in Sources */,
 				210906ED212C1C8500CB49B2 /* ForgotPasswordVC.swift in Sources */,
+				2114E7F521469830001761B6 /* NewSignUpVC.swift in Sources */,
+				2114E7F3214687AC001761B6 /* OtpVC.swift in Sources */,
 				21DA5A7A213FD98D00ADFF6E /* FlightCell.swift in Sources */,
 				21DDF2FA213D1A4A004FA1EA /* PopularListCell.swift in Sources */,
 				21706801212BEA440003E665 /* SideMenuVc.swift in Sources */,
 				21672AE7212E928800F1F6C1 /* PackageListCell.swift in Sources */,
 				212AE762213FC3810091DEAE /* HotelGridCell.swift in Sources */,
-				21901F64212D1D330050DB7C /* SearchDestinationVC.swift in Sources */,
 				213C7B47213E696A00D34871 /* FulliternityVC.swift in Sources */,
-				21291B78213674D50001BA7D /* SearchCityVC.swift in Sources */,
 				21672AE9212E930A00F1F6C1 /* PackageDetailCell.swift in Sources */,
 				21672ADD212E795900F1F6C1 /* PackageDetailVC.swift in Sources */,
 				213C7B49213E6BC200D34871 /* TableChildExampleViewController.swift in Sources */,

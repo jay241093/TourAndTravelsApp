@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import GoogleSignIn
 import IQKeyboardManagerSwift
 import GooglePlaces
 @UIApplicationMain
@@ -18,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        GIDSignIn.sharedInstance().clientID = "760516051540-9hi70jl6t7ar2jbllbt3t2dd3leusm4j.apps.googleusercontent.com"
+   //     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+       // GIDSignIn.sharedInstance().clientID = "760516051540-9hi70jl6t7ar2jbllbt3t2dd3leusm4j.apps.googleusercontent.com"
         GMSPlacesClient.provideAPIKey("AIzaSyDnWg8jiCQCI0PmLEls0BrSOHmhmyRvk5g")
 
       
@@ -34,24 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        let sourceApplication =  options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
-        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
-        
-        let googleHandler = GIDSignIn.sharedInstance().handle(
-            url,
-            sourceApplication: sourceApplication,
-            annotation: annotation )
-        
-        let facebookHandler = FBSDKApplicationDelegate.sharedInstance().application (
-            app,
-            open: url,
-            sourceApplication: sourceApplication,
-            annotation: annotation )
-        
-        return googleHandler || facebookHandler
-    }
+//
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+//        let sourceApplication =  options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
+//        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+//
+//        let googleHandler = GIDSignIn.sharedInstance().handle(
+//            url,
+//            sourceApplication: sourceApplication,
+//            annotation: annotation )
+//
+//        let facebookHandler = FBSDKApplicationDelegate.sharedInstance().application (
+//            app,
+//            open: url,
+//            sourceApplication: sourceApplication,
+//            annotation: annotation )
+//
+//        return googleHandler || facebookHandler
+//    }
     
     
     

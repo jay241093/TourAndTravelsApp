@@ -21,10 +21,13 @@ struct RegisterResponse: Codable {
 }
 
 struct RegisterClass: Codable {
-    let fname, lname, email, mobileNumber: String?
+    let id: Int
+    let mobileNumber, fname, lname, email: String
+    let token: String
     
     enum CodingKeys: String, CodingKey {
-        case fname, lname, email
+        case id
         case mobileNumber = "mobile_number"
+        case fname, lname, email, token
     }
 }

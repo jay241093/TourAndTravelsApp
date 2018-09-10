@@ -14,15 +14,51 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
     @IBOutlet weak var searchview: UIView!
     
     @IBOutlet weak var tblview: UITableView!
-    var sectionary = ["Sort By","Duration", "Budget", "Price" ,"Themes"]
+    
+    var Finalsortary = NSMutableArray()
+    var FinalDurationAry = NSMutableArray()
+    var FinalBudgetAry = NSMutableArray()
+    var FinalPricAary = NSMutableArray()
+    var FinalThemeAry = NSMutableArray()
+
+    
+    
+    var sectionary = ["Sort By","Duration", "Budget", "Price" ,"Themes","Type"]
     
     var SortAry = ["Price Low to High","Price Low - High", "Latest"]
+    var sortid = ["0","1","2"]
     var DurationAry = ["1-3 Days","4-7 Days", "8-14 Days", "2-3 Weeks" ,"3+ Weeks"]
-    var BudgetAry = ["Economy","Standard", "Luxury"]
-    var PricAary = ["< 100000","100001 - 25000", "250001 - 50000" , "> 50000"]
+    var Durationid = ["1,3","4,7","8,14","14,21","21"]
+
+    var BudgetAry = ["economy","standard", "luxury"]
+    var PricAary = ["< 10000","10001 - 25000", "25001 - 50000" , "> 50000"]
+    var Priceid = ["10000","10001,25000","25001,50000","50000"]
     var ThemesAry = [Theme]()
+    
+    var International = ["Domestic" , "International"]
 
+    @IBAction func ApplyAction(_ sender: Any) {
+        
+        print(Finalsortary)
+        print(FinalDurationAry)
+        print(FinalBudgetAry)
+        print(FinalPricAary)
+        print(FinalThemeAry)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackagesListVC") as! PackagesListVC
+        nextViewController.sortary = Finalsortary
+        nextViewController.DurationAry = FinalDurationAry
+        nextViewController.BudgetAry = FinalBudgetAry
+        nextViewController.PricAary = FinalPricAary
+        nextViewController.ThemeAry = FinalThemeAry
+     self.navigationController?.pushViewController(nextViewController, animated: true)
+        
+
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          GettThemes()
@@ -63,7 +99,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 5
+        return sectionary.count
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -94,10 +130,14 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
             
             return PricAary.count
         }
-        else
+        else if(section == 4)
         {
             
             return ThemesAry.count
+        }
+        else
+        {
+            return International.count
         }
         
         
@@ -105,7 +145,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-        tblhight.constant = tblview.contentSize.height
+      tblhight.constant = tableView.contentSize.height
 
         if(indexPath.section == 0)
         {
@@ -114,9 +154,10 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
             cell.checkbox.borderStyle = .circle
             cell.checkbox.layer.borderColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0).cgColor
             cell.checkbox.checkmarkStyle = .circle
-            cell.lblname.text = sectionary[indexPath.row]
+            cell.lblname.text = SortAry[indexPath.row]
             cell.checkbox.checkedBorderColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
             cell.checkbox.checkmarkColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
+            
             return cell
         }
         
@@ -132,7 +173,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
             cell.checkbox.checkedBorderColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
             cell.checkbox.checkmarkColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
 
-
+           
             return cell
         }
         else if(indexPath.section == 2)
@@ -165,7 +206,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
             return cell
         }
         
-        else
+        if(indexPath.section == 4)
         {
             let dic = ThemesAry[indexPath.row]
 
@@ -177,8 +218,24 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
             cell.checkbox.checkedBorderColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
             cell.checkbox.checkmarkColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
 
-        cell.lblname.text = dic.name
+              cell.lblname.text = dic.name
             return cell
+        }
+        else
+        
+        {
+            let cell :CheckBoxCell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as!  CheckBoxCell
+            cell.checkbox.borderStyle = .square
+            cell.checkbox.layer.borderColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0).cgColor
+            
+            cell.checkbox.checkmarkStyle = .tick
+            cell.checkbox.checkedBorderColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
+            cell.checkbox.checkmarkColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
+            cell.lblname.text = International[indexPath.row]
+
+       
+            return cell
+
         }
         
         
@@ -189,8 +246,99 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
         return UITableViewAutomaticDimension
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as!  CheckBoxCell
+        if(cell.checkbox.isChecked)
+        {
+            cell.checkbox.isChecked = false
+        }
+        else
+        {
+              cell.checkbox.isChecked = true
+            
+        }
 
+       if(indexPath.section == 0)
+       {
+        Finalsortary.removeAllObjects()
+        Finalsortary.add(sortid[indexPath.row])
+        for i in 0..<tableView.numberOfRows(inSection: indexPath.section) {
+            if i != indexPath.row {
+                var cell: CheckBoxCell? = tableView.cellForRow(at: IndexPath(row: i, section: indexPath.section)) as! CheckBoxCell
+                cell?.checkbox.isChecked = false
+                
+                //Do your stuff
+            }
+        }
+
+        
+        
+        }
+       else if(indexPath.section == 1)
+        {
+            var cell = tableView.cellForRow(at:indexPath) as? CheckBoxCell
+
+            if(cell?.checkbox.isChecked)!
+            {
+            FinalDurationAry.add(Durationid[indexPath.row])
+            }
+            else
+            {
+                FinalDurationAry.remove(sortid[indexPath.row])
+            }
+        }
+       else if(indexPath.section == 2)
+       {
+        var cell = tableView.cellForRow(at:indexPath) as? CheckBoxCell
+        
+        if(cell?.checkbox.isChecked)!
+        {
+        FinalBudgetAry.add(BudgetAry[indexPath.row])
+        }
+        else
+        {
+            FinalBudgetAry.remove(BudgetAry[indexPath.row])
+
+        }
+        }
+       else if(indexPath.section == 3)
+        
+       {
+        var cell = tableView.cellForRow(at:indexPath) as? CheckBoxCell
+
+        
+        if(cell?.checkbox.isChecked)!
+        {
+        FinalPricAary.add(Priceid[indexPath.row])
+            
+        }
+        else
+        {
+            FinalPricAary.remove(Priceid[indexPath.row])
+
+        }
+        }
+       else if(indexPath.section == 4)
+       {
+        var cell = tableView.cellForRow(at:indexPath) as? CheckBoxCell
+        
+        
+        if(cell?.checkbox.isChecked)!
+        {
+        FinalThemeAry.add(ThemesAry[indexPath.row].id)
+        }
+        else
+        {
+            FinalThemeAry.remove(ThemesAry[indexPath.row].id)
+
+        }
+        }
+        
+        
+    }
+    
+  
 // MARK: - UserDefine functions
 
     func GettThemes()
@@ -219,6 +367,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
                             self.tblview.reloadData()
                             self.tblview.layoutIfNeeded()
                               self.tblview.updateConstraints()
+
                             
                         }
                     }

@@ -6,8 +6,6 @@ project 'TourAndTravelsApp.xcodeproj'
 target 'TourAndTravelsApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'FBSDKLoginKit'
-  pod 'GoogleSignIn'
   pod 'SkyFloatingLabelTextField'
   pod "MXParallaxHeader"
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'alamofire5'
@@ -17,6 +15,8 @@ target 'TourAndTravelsApp' do
   pod 'FSPagerView'
    pod 'GooglePlaces'
   pod 'GooglePlacePicker'
+  pod 'SVPinView', '~> 1.0'
+
   
   
 

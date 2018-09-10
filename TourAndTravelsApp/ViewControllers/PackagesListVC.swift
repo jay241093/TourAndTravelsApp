@@ -10,6 +10,9 @@
 import UIKit
 import Alamofire
 import SDWebImage
+
+var CityName: String = ""
+
 class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSource{
     @IBOutlet weak var tblheight: NSLayoutConstraint!
     
@@ -18,10 +21,22 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     var isfav = 0
     var cityname : String?
     var packagelist = [PackageListing]()
-    
+    var sortary = NSMutableArray()
+    var DurationAry = NSMutableArray()
+    var BudgetAry = NSMutableArray()
+    var PricAary = NSMutableArray()
+    var ThemeAry = NSMutableArray()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      if(CityName != "")
+      {
+        
+        }
+        else
+      {
+        CityName = cityname!
+        }
         let display = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(FilterTapped))
      //   self.tblview.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
 
@@ -125,10 +140,6 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         self.navigationController?.pushViewController(nextViewController, animated: true)
         
     }
-    
-    
-    
-    
     @objc func FavouriteTap(sender:UIButton)
     {
         let cell = tblview.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PackageListCell
@@ -256,16 +267,68 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
             
             var parameter :Parameters =
                 [:]
-            
+            print(sortary.componentsJoined(by:","))
+            print(DurationAry.componentsJoined(by:":"))
+            print(BudgetAry.componentsJoined(by:","))
+            print(PricAary.componentsJoined(by:":"))
+            print(ThemeAry.componentsJoined(by:","))
+print(CityName)
+
+
+
             if(UserDefaults.standard.object(forKey:"islogin") != nil)
             {
                 
-                parameter = ["user_id":UserDefaults.standard.value(forKey:"Userid") as! Int]
+                parameter["user_id"] = UserDefaults.standard.value(forKey:"Userid") as! Int
+                parameter["to_city"] = CityName
+                
+                if(sortary.count > 0)
+                {
+                    parameter["sort_by"] = sortary.componentsJoined(by:",")
+                }
+                if(DurationAry.count > 0)
+                {
+                    parameter["duration"] = DurationAry.componentsJoined(by:",")
+                }
+                if(BudgetAry.count > 0)
+                {
+                    parameter["budget"] = BudgetAry.componentsJoined(by:",")
+                }
+                if(PricAary.count > 0)
+                {
+                    parameter["price"] = PricAary.componentsJoined(by:",")
+                }
+                if(ThemeAry.count > 0)
+                {
+                    parameter["themes"] =  ThemeAry.componentsJoined(by:",")
+                }
+                
             }
             else
             
             {
-                parameter = [:]
+                parameter["to_city"] = CityName
+
+                if(sortary.count > 0)
+                {
+                    parameter["sort_by"] = sortary.componentsJoined(by:",")
+                }
+                if(DurationAry.count > 0)
+                {
+                    parameter["duration"] = DurationAry.componentsJoined(by:",")
+                }
+                if(BudgetAry.count > 0)
+                {
+                    parameter["budget"] = BudgetAry.componentsJoined(by:",")
+                }
+                if(PricAary.count > 0)
+                {
+                    parameter["price"] = PricAary.componentsJoined(by:",")
+                }
+                if(ThemeAry.count > 0)
+                {
+                    parameter["themes"] =  ThemeAry.componentsJoined(by:",")
+                }
             }
             Alamofire.request(webservices().baseurl + "packages", method: .post, parameters:parameter, encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<PackageList>) in
                 switch response.result{
@@ -318,18 +381,11 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     {
         if webservices().isConnectedToNetwork() == true
         {
-         
-            
             Alamofire.request(webservices().baseurl + "package/add_views", method: .post, parameters:["package_id":id] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
                 
                 switch(response.result) {
                 case .success(_):
-                    
-                    
-                    if let data = response.result.value{
-                       
-                        
-                    }
+                 
                     break
                     
                 case .failure(_):
@@ -359,6 +415,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     self.navigationController?.pushViewController(nextViewController, animated: true)
     
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

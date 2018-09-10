@@ -38,7 +38,7 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
         
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
-
+        autocompleteController.autocompleteFilter?.type = .city
         let navigationController = UINavigationController(rootViewController: autocompleteController)
         navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(navigationController, animated: true, completion: nil)
@@ -65,6 +65,9 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
         setShadow(view: view4)
 
         setShadow(view: view5)
+        let button = UIBarButtonItem(barButtonSystemItem:.search, target: self, action: #selector(PopularPackgesVC.ActionSearch))
+     
+        navigationController?.navigationItem.rightBarButtonItem = button
 
         if revealViewController() != nil
         {
@@ -125,10 +128,11 @@ extension PopularPackgesVC: GMSAutocompleteViewControllerDelegate {
         print("Place address: \(place.formattedAddress)")
         print("Place attributions: \(place.attributions)")
         dismiss(animated: true, completion: nil)
-
+       CityName = ""
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackagesListVC") as! PackagesListVC
+        nextViewController.cityname = place.name
         self.navigationController?.pushViewController(nextViewController, animated: true)
 
         

@@ -38,33 +38,17 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     // MARK: - IBAction Methods
     
-    @IBAction func Tapaction(_ sender: Any) {
-        
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ImageListVC") as! ImageListVC
-        
-        nextViewController.packageList = package
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-        
-    }
-    
+ 
     @IBAction func BookNowAction(_ sender: Any) {
         
-       if(UserDefaults.standard.object(forKey:"islogin") != nil)
-       {
-        BookNow(id: (package?.id)!)
-        }
-        else
-       {
+      
         let alertController = UIAlertController(title: nil, message: "Please Login to Book Inquiry", preferredStyle: .alert)
         
         // Create the actions
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
             UIAlertAction in
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NewLoginVc") as! NewLoginVc
             self.navigationController?.pushViewController(nextViewController, animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
@@ -79,7 +63,6 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         // Present the controller
         self.present(alertController, animated: true, completion: nil)
 
-        }
     }
     
     
