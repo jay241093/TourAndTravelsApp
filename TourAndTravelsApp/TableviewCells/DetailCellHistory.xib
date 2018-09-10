@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="212" id="KGk-i7-Jjw" customClass="DetailCellHistory" customModule="TourAndTravelsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="212"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="351" height="211.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMz-y7-yCM">
+                        <rect key="frame" x="6" y="8" width="339" height="196"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIY-Cu-tS5">
+                                <rect key="frame" x="12" y="77" width="319" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="99" id="5VI-8H-Xp9"/>
+                                </constraints>
+                                <string key="text"> static electric charge can be created whenever two surfaces contact and separate, and at least one of the surfaces has a high resistance to electric current (and is therefore an electrical insulator). The effects of static electricity are familiar to most people because people can feel, hear, and even see the spark as the excess charge is neutralized when brought close to a large electrical conductor (for example, a path to ground), or a region with an excess charge of the opposite polarity (positive or negative). The familiar phenomenon of a static shock – more specifically, an electrostatic discharge – is caused by the neutralization of charge.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="0.66828981160000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going to palace at pataya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm8-lX-SAz">
+                                <rect key="frame" x="12" y="3" width="319" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="1P1-BL-JWl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1r-MX-AIt">
+                                <rect key="frame" x="12" y="37" width="319" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Yvg-JP-92S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qm8-lX-SAz" firstAttribute="trailing" secondItem="vMz-y7-yCM" secondAttribute="trailingMargin" id="4Ng-uM-0X8"/>
+                            <constraint firstAttribute="bottom" secondItem="OIY-Cu-tS5" secondAttribute="bottom" constant="9" id="9sd-IB-Doh"/>
+                            <constraint firstItem="A1r-MX-AIt" firstAttribute="trailing" secondItem="OIY-Cu-tS5" secondAttribute="trailing" id="Lab-JW-1Mp"/>
+                            <constraint firstItem="qm8-lX-SAz" firstAttribute="trailing" secondItem="A1r-MX-AIt" secondAttribute="trailing" id="MUR-kk-xeq"/>
+                            <constraint firstItem="A1r-MX-AIt" firstAttribute="leading" secondItem="OIY-Cu-tS5" secondAttribute="leading" id="P0q-5Y-0UC"/>
+                            <constraint firstItem="qm8-lX-SAz" firstAttribute="top" secondItem="vMz-y7-yCM" secondAttribute="top" constant="3" id="UiA-UU-XaS"/>
+                            <constraint firstItem="qm8-lX-SAz" firstAttribute="leading" secondItem="vMz-y7-yCM" secondAttribute="leading" constant="12" id="c10-Cd-uUE"/>
+                            <constraint firstItem="A1r-MX-AIt" firstAttribute="top" secondItem="qm8-lX-SAz" secondAttribute="bottom" constant="8" symbolic="YES" id="dTM-pq-82v"/>
+                            <constraint firstItem="qm8-lX-SAz" firstAttribute="leading" secondItem="A1r-MX-AIt" secondAttribute="leading" id="ho9-F1-Edx"/>
+                            <constraint firstItem="OIY-Cu-tS5" firstAttribute="top" secondItem="A1r-MX-AIt" secondAttribute="bottom" constant="3" id="o7w-de-lsL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="vMz-y7-yCM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-10" id="OTc-29-KMJ"/>
+                    <constraint firstItem="vMz-y7-yCM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="PZ7-fZ-mT0"/>
+                    <constraint firstItem="vMz-y7-yCM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZHf-P4-yJU"/>
+                    <constraint firstItem="vMz-y7-yCM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zym-g2-n3w"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lbldes" destination="OIY-Cu-tS5" id="toE-m4-G8N"/>
+                <outlet property="lblinclusions" destination="A1r-MX-AIt" id="c9v-pC-dZ0"/>
+                <outlet property="lblname" destination="qm8-lX-SAz" id="iUJ-sn-wyM"/>
+                <outlet property="view" destination="vMz-y7-yCM" id="v0a-gd-R8C"/>
+            </connections>
+            <point key="canvasLocation" x="49.5" y="138"/>
+        </tableViewCell>
+    </objects>
+</document>
