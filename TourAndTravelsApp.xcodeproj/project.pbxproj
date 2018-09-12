@@ -17,6 +17,8 @@
 		2114E7F12146528C001761B6 /* NewLoginVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114E7F02146528C001761B6 /* NewLoginVc.swift */; };
 		2114E7F3214687AC001761B6 /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114E7F2214687AC001761B6 /* OtpVC.swift */; };
 		2114E7F521469830001761B6 /* NewSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114E7F421469830001761B6 /* NewSignUpVC.swift */; };
+		2119E44D2148D0E800019801 /* ReviewPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119E44C2148D0E800019801 /* ReviewPopUp.swift */; };
+		2119E44F2148ED9E00019801 /* ReviewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119E44E2148ED9E00019801 /* ReviewListVC.swift */; };
 		2124474621422DCD0002AFF1 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124474521422DCC0002AFF1 /* Checkbox.swift */; };
 		2124474A21423F1D0002AFF1 /* CheckBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124474921423F1D0002AFF1 /* CheckBoxCell.swift */; };
 		2124E3C12137CCDF00182399 /* HotelCheckinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124E3BF2137CCDF00182399 /* HotelCheckinCell.swift */; };
@@ -97,6 +99,8 @@
 		2114E7F02146528C001761B6 /* NewLoginVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginVc.swift; sourceTree = "<group>"; };
 		2114E7F2214687AC001761B6 /* OtpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
 		2114E7F421469830001761B6 /* NewSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSignUpVC.swift; sourceTree = "<group>"; };
+		2119E44C2148D0E800019801 /* ReviewPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPopUp.swift; sourceTree = "<group>"; };
+		2119E44E2148ED9E00019801 /* ReviewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListVC.swift; sourceTree = "<group>"; };
 		2124474521422DCC0002AFF1 /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		2124474921423F1D0002AFF1 /* CheckBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCell.swift; sourceTree = "<group>"; };
 		2124E3BF2137CCDF00182399 /* HotelCheckinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelCheckinCell.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		213C7B4A213E98A400D34871 /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				2119E44C2148D0E800019801 /* ReviewPopUp.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 				213C7B48213E6BC200D34871 /* TableChildExampleViewController.swift */,
 				210EFECE21415BE900B51BF8 /* SearchVC.swift */,
 				21EDCBE32143CBF00006EB58 /* FavouriteLstVc.swift */,
+				2119E44E2148ED9E00019801 /* ReviewListVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				21DDF2F0213CF174004FA1EA /* ProfileVC.swift in Sources */,
 				2114E7F12146528C001761B6 /* NewLoginVc.swift in Sources */,
 				21402A9421427FFE001ED099 /* ThemeList.swift in Sources */,
+				2119E44D2148D0E800019801 /* ReviewPopUp.swift in Sources */,
 				210906EF212C215B00CB49B2 /* SignUpVC.swift in Sources */,
 				21EDCBE42143CBF00006EB58 /* FavouriteLstVc.swift in Sources */,
 				2124E3C12137CCDF00182399 /* HotelCheckinCell.swift in Sources */,
@@ -669,6 +676,7 @@
 				2124474621422DCD0002AFF1 /* Checkbox.swift in Sources */,
 				21901F6A212D24180050DB7C /* Extensions.swift in Sources */,
 				21706803212BEA440003E665 /* MainVC.swift in Sources */,
+				2119E44F2148ED9E00019801 /* ReviewListVC.swift in Sources */,
 				2146638C2136A0B8009D9770 /* PackageList.swift in Sources */,
 				210906ED212C1C8500CB49B2 /* ForgotPasswordVC.swift in Sources */,
 				2114E7F521469830001761B6 /* NewSignUpVC.swift in Sources */,

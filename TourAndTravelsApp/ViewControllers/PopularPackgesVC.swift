@@ -54,11 +54,14 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     }
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        GetPopularPackages()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-GetPopularPackages()
+
         let nibName = UINib(nibName: "PopularListCell", bundle:nil)
         
         collectionview1.register(nibName, forCellWithReuseIdentifier: "cell")

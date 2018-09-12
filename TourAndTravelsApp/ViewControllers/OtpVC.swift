@@ -108,11 +108,18 @@ class OtpVC: UIViewController {
                     if let data = response.result.value{
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
+                        let errormsg = dic.value(forKey:"message") as! String
+
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
                             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
                             self.count = 60
                             self.apilogincall()
+                        }
+                        else if(errormsg.contains("The mobile number has already been taken."))
+                        {
+                            self.apilogincall()
+
                         }
                         else
                         {

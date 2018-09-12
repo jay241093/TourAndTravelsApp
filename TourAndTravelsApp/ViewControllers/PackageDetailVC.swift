@@ -13,7 +13,9 @@ import FSPagerView
 import  Alamofire
 var globalpackage : PackageListing?
 
-class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataSource ,MXParallaxHeaderDelegate, FSPagerViewDelegate , FSPagerViewDataSource {
+class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataSource ,MXParallaxHeaderDelegate, FSPagerViewDelegate , FSPagerViewDataSource, ReviewAdd {
+   
+    
     @IBOutlet weak var imgview: UIImageView!
     @IBOutlet weak var viewhight: NSLayoutConstraint!
     
@@ -112,14 +114,35 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11 + (package?.packageReviews.count)!
+        
+        print(package?.packageReviews.count)
+        if(package?.packageReviews.count == 0)
+        {
+             return 11
+            
+        }
+        else if(package?.packageReviews.count == 1)
+        {
+          return 11 + 1
+        }
+        else if(package?.packageReviews.count == 2){
+            
+            return 11 + 2
+        }
+        else
+        {
+             return 11 + 2
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         viewhight.constant = tableView.contentSize.height
-
+        let lastSectionIndex = tableView.numberOfSections - 1
+        
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        let Index = IndexPath(row: lastRowIndex, section: 0)
         if(indexPath.row == 0)
         {
             
@@ -283,10 +306,14 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell8", for: indexPath) as!  SearchCityCell
             cell.selectionStyle = .none
-            
+            cell.btnadd.addTarget(self, action:#selector(AddReview), for: .touchUpInside)
+            cell.btnviewmore.addTarget(self, action:#selector(ViewReview), for: .touchUpInside)
+
             return cell
         }
-       else if(indexPath.row == 11 + (package?.packageReviews.count)! - 1)
+      
+        
+       else if(indexPath.row == Index.row)
         {
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell7", for: indexPath) as!  SearchCityCell
             setShadow(view: cell.voew)
@@ -310,12 +337,33 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         
         {
             let cell:ReviewCell = tableView.dequeueReusableCell(withIdentifier: "cell9", for: indexPath) as!  ReviewCell
+          cell.selectionStyle = .none
+           if(package?.packageReviews.count == 1)
+           {
+            if(indexPath.row == 10)
+           {
+            cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)
+            cell.lblname.text = package?.packageReviews[0].name
+            cell.lblcomment.text =  package?.packageReviews[0].text
             
-            for var i in 0...(package?.packageReviews.count)!-1
+            }
+            }
+            if((package?.packageReviews.count)! >= 2)
             {
-                cell.ratingview.rating = Float((package?.packageReviews[i].rating)!)
-                cell.lblname.text = package?.packageReviews[i].name
-                cell.lblcomment.text =  package?.packageReviews[i].text
+                if(indexPath.row == 10)
+                {
+                    cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)
+                    cell.lblname.text = package?.packageReviews[0].name
+                    cell.lblcomment.text =  package?.packageReviews[0].text
+                    
+                }
+                if(indexPath.row == 11)
+                {
+                    cell.ratingview.rating = Float((package?.packageReviews[1].rating)!)
+                    cell.lblname.text = package?.packageReviews[1].name
+                    cell.lblcomment.text =  package?.packageReviews[1].text
+                    
+                }
             }
         
             return cell
@@ -562,10 +610,33 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         }
         
     }
+ 
+    func Addreview(package: PackageListing) {
+        self.package = package
+        self.tableView.reloadData()
+        print(package.packageReviews.count)
+    }
+    @objc func AddReview(sender:UIButton)
+    {
     
+    let popOverConfirmVC = self.storyboard?.instantiateViewController(withIdentifier: "ReviewPopUp") as! ReviewPopUp
+     popOverConfirmVC.newpackage = package
+        popOverConfirmVC.modalPresentationStyle = .overCurrentContext
+        popOverConfirmVC.modalTransitionStyle = .crossDissolve
+        popOverConfirmVC.delegate = self
+        self.present(popOverConfirmVC, animated:true, completion:nil)
     
+    }
     
-    
+    @objc func ViewReview(sender:UIButton)
+        {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ReviewListVC") as! ReviewListVC
+            nextViewController.newpackage = self.package
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+            
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

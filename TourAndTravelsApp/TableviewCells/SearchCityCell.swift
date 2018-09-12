@@ -21,6 +21,10 @@ class SearchCityCell: UITableViewCell {
     
     @IBOutlet weak var btnreadmore: UIButton!
     
+    @IBOutlet weak var btnadd: UIButton!
+    
+    @IBOutlet weak var btnviewmore: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

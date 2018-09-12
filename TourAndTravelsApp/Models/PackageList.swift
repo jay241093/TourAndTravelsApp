@@ -31,7 +31,7 @@ struct PackageListing: Codable {
     let packageIty: [PackageIty]
     let packageImages: [PackageImage]
     let allCities: [AllCity]
-    let packageReviews: [PackageReview]
+    var packageReviews: [PackageReview]
     let agency: Agency
     
     enum CodingKeys: String, CodingKey {
@@ -118,11 +118,11 @@ struct PackageIty: Codable {
 }
 
 struct PackageReview: Codable {
-    let id, packageID: Int
-    let rating:Double
-    let title, text, name: String
-    let status: Int
-    let createdAt, updatedAt: String
+    var id, packageID: Int
+    var rating:Double
+    var title, text, name: String
+    var status: Int
+    var createdAt, updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
