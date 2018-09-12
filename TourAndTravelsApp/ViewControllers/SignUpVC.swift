@@ -268,12 +268,7 @@ class SignUpVC: UIViewController  {
                         let id = ((dic.value(forKey:"data") as! NSDictionary).value(forKey: "details") as! NSDictionary).value(forKey:"id") as! Int
                         
                         UserDefaults.standard.set(id, forKey: "Userid")
-                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                        
-                        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-                        self.navigationController?.pushViewController(nextViewController, animated: true)
-                        let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"register successfully")
-                        self.present(alert, animated: true, completion: nil)
+                    
                         
                     }
                     break

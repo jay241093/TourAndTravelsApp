@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
+  - FloatRatingView (2.0)
   - FSPagerView (0.7.2)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -13,6 +14,7 @@ PODS:
     - GoogleMaps/Base (= 2.7.0)
   - IQKeyboardManagerSwift (6.1.1)
   - MXParallaxHeader (0.6.1)
+  - PKHUD (5.1.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -22,11 +24,13 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
+  - FloatRatingView (~> 2.0.0)
   - FSPagerView
   - GooglePlacePicker
   - GooglePlaces
   - IQKeyboardManagerSwift
   - MXParallaxHeader
+  - PKHUD
   - SDWebImage (~> 4.0)
   - SkyFloatingLabelTextField
   - SVPinView (~> 1.0)
@@ -34,12 +38,14 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FloatRatingView
     - FSPagerView
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
     - IQKeyboardManagerSwift
     - MXParallaxHeader
+    - PKHUD
     - SDWebImage
     - SkyFloatingLabelTextField
     - SVPinView
@@ -57,17 +63,19 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: eafeeb206da2148045e57a5dc3c6a4acc65b9eb2
+  FloatRatingView: 857ab8f10040d06a42fc979f486c8f9fecd2f2e5
   FSPagerView: 7515f63c424da71623d299d4fbbfb3dd884642ff
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
   MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
+  PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
   SVPinView: 5f557100208e2a103685bd60d95bbf70a482bbd5
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: 7c579bdf90c84c9cd8d2f89bc24dcb5881c41c52
+PODFILE CHECKSUM: 2b3bc5dbf12a8baa2d6b860ce9bd25222b4cbd23
 
 COCOAPODS: 1.5.2

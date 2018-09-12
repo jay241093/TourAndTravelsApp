@@ -26,6 +26,8 @@
 		212AE760213FC3630091DEAE /* HotelListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212AE75F213FC3630091DEAE /* HotelListCell.swift */; };
 		212AE762213FC3810091DEAE /* HotelGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212AE761213FC3810091DEAE /* HotelGridCell.swift */; };
 		212B72B721356E1E00B80A60 /* FullScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212B72B621356E1E00B80A60 /* FullScheduleVC.swift */; };
+		212D31222147961900DBA0E1 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D31212147961900DBA0E1 /* HomeResponse.swift */; };
+		212D31242147EA5100DBA0E1 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D31232147EA5100DBA0E1 /* ReviewCell.swift */; };
 		213AD662213015A600B67567 /* KTCenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 213AD660213015A600B67567 /* KTCenterFlowLayout.m */; };
 		213C7B47213E696A00D34871 /* FulliternityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C7B46213E696A00D34871 /* FulliternityVC.swift */; };
 		213C7B49213E6BC200D34871 /* TableChildExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C7B48213E6BC200D34871 /* TableChildExampleViewController.swift */; };
@@ -46,8 +48,6 @@
 		2170680F212BEABB0003E665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2170680E212BEABA0003E665 /* Assets.xcassets */; };
 		21706811212BEADB0003E665 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21706810212BEADB0003E665 /* Main.storyboard */; };
 		21706813212BEDE50003E665 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21706812212BEDE50003E665 /* GoogleService-Info.plist */; };
-		21901F68212D24180050DB7C /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F65212D24180050DB7C /* CollapsibleTableViewHeader.swift */; };
-		21901F69212D24180050DB7C /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F66212D24180050DB7C /* ExampleData.swift */; };
 		21901F6A212D24180050DB7C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F67212D24180050DB7C /* Extensions.swift */; };
 		21901F6D212D244A0050DB7C /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F6C212D244A0050DB7C /* CollapsibleTableViewCell.swift */; };
 		21901F73212D7AB80050DB7C /* PackagesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901F72212D7AB80050DB7C /* PackagesListVC.swift */; };
@@ -106,6 +106,8 @@
 		212AE75F213FC3630091DEAE /* HotelListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelListCell.swift; sourceTree = "<group>"; };
 		212AE761213FC3810091DEAE /* HotelGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelGridCell.swift; sourceTree = "<group>"; };
 		212B72B621356E1E00B80A60 /* FullScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScheduleVC.swift; sourceTree = "<group>"; };
+		212D31212147961900DBA0E1 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
+		212D31232147EA5100DBA0E1 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		213AD660213015A600B67567 /* KTCenterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTCenterFlowLayout.m; sourceTree = "<group>"; };
 		213AD661213015A600B67567 /* KTCenterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTCenterFlowLayout.h; sourceTree = "<group>"; };
 		213C7B46213E696A00D34871 /* FulliternityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulliternityVC.swift; sourceTree = "<group>"; };
@@ -136,8 +138,6 @@
 		2170680E212BEABA0003E665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21706810212BEADB0003E665 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		21706812212BEDE50003E665 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		21901F65212D24180050DB7C /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
-		21901F66212D24180050DB7C /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		21901F67212D24180050DB7C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		21901F6C212D244A0050DB7C /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		21901F72212D7AB80050DB7C /* PackagesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesListVC.swift; sourceTree = "<group>"; };
@@ -267,8 +267,6 @@
 				214C608521301AA800A7A9D9 /* KTAwesomeCell.m */,
 				213AD661213015A600B67567 /* KTCenterFlowLayout.h */,
 				213AD660213015A600B67567 /* KTCenterFlowLayout.m */,
-				21901F65212D24180050DB7C /* CollapsibleTableViewHeader.swift */,
-				21901F66212D24180050DB7C /* ExampleData.swift */,
 				21901F67212D24180050DB7C /* Extensions.swift */,
 				210906E8212BF0E200CB49B2 /* webservices.swift */,
 				21706809212BEA650003E665 /* SWRevealViewController.h */,
@@ -338,6 +336,7 @@
 				21291B7B213681CC0001BA7D /* CityResponse.swift */,
 				2146638B2136A0B8009D9770 /* PackageList.swift */,
 				21402A9321427FFE001ED099 /* ThemeList.swift */,
+				212D31212147961900DBA0E1 /* HomeResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +351,7 @@
 				21DA5A79213FD98D00ADFF6E /* FlightCell.swift */,
 				2124474921423F1D0002AFF1 /* CheckBoxCell.swift */,
 				21EDCBE72143D1730006EB58 /* FavouriteCell.swift */,
+				212D31232147EA5100DBA0E1 /* ReviewCell.swift */,
 			);
 			path = CollectionviewCells;
 			sourceTree = "<group>";
@@ -584,8 +584,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TourAndTravelsApp/Pods-TourAndTravelsApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPinView/SVPinView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
@@ -595,8 +597,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatRatingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXParallaxHeader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPinView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
@@ -635,19 +639,18 @@
 				21706805212BEA540003E665 /* AppDelegate.swift in Sources */,
 				214C608621301AA800A7A9D9 /* KTAwesomeCell.m in Sources */,
 				21EDCBE62143CC500006EB58 /* UserMerResponse.swift in Sources */,
-				21901F68212D24180050DB7C /* CollapsibleTableViewHeader.swift in Sources */,
 				21291B7A21367ADF0001BA7D /* SearchCityCell.swift in Sources */,
 				21DDF2F2213D152E004FA1EA /* PopularPackgesVC.swift in Sources */,
 				212AE760213FC3630091DEAE /* HotelListCell.swift in Sources */,
 				212B72B721356E1E00B80A60 /* FullScheduleVC.swift in Sources */,
 				21ADC6512133CD78006BF58F /* LoginResponse.swift in Sources */,
 				21901F6D212D244A0050DB7C /* CollapsibleTableViewCell.swift in Sources */,
+				212D31242147EA5100DBA0E1 /* ReviewCell.swift in Sources */,
 				21901F73212D7AB80050DB7C /* PackagesListVC.swift in Sources */,
 				2124474A21423F1D0002AFF1 /* CheckBoxCell.swift in Sources */,
 				210EFECF21415BE900B51BF8 /* SearchVC.swift in Sources */,
 				21EDCBE82143D1730006EB58 /* FavouriteCell.swift in Sources */,
 				21ADC6532133D92B006BF58F /* RegisterResponse.swift in Sources */,
-				21901F69212D24180050DB7C /* ExampleData.swift in Sources */,
 				21DDF2F0213CF174004FA1EA /* ProfileVC.swift in Sources */,
 				2114E7F12146528C001761B6 /* NewLoginVc.swift in Sources */,
 				21402A9421427FFE001ED099 /* ThemeList.swift in Sources */,
@@ -669,6 +672,7 @@
 				2146638C2136A0B8009D9770 /* PackageList.swift in Sources */,
 				210906ED212C1C8500CB49B2 /* ForgotPasswordVC.swift in Sources */,
 				2114E7F521469830001761B6 /* NewSignUpVC.swift in Sources */,
+				212D31222147961900DBA0E1 /* HomeResponse.swift in Sources */,
 				2114E7F3214687AC001761B6 /* OtpVC.swift in Sources */,
 				21DA5A7A213FD98D00ADFF6E /* FlightCell.swift in Sources */,
 				21DDF2FA213D1A4A004FA1EA /* PopularListCell.swift in Sources */,

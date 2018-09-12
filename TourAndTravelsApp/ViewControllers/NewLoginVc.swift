@@ -37,7 +37,7 @@ if(txtcountry.text == "")
      else
         
 {
-    ApiLogin()
+    ApiSedOtp()
     
         }
     }
@@ -259,8 +259,9 @@ if(txtcountry.text == "")
               "Zambia (+260)",
               "Zimbabwe (+263)"]
         
+    
       
-        self.title = "Login"
+        self.title = "Authenticate"
         setLeftView(textfield: txtcountry)
         setShadow(view: view1)
         var toolBar = UIToolbar()
@@ -352,29 +353,42 @@ if(txtcountry.text == "")
     }
 
     
-    func ApiLogin()
+    func ApiSedOtp()
     {
         if webservices().isConnectedToNetwork() == true
         {
-            Alamofire.request(webservices().baseurl + "sendotp", method: .post, parameters:["mobile_number":"+919033324175"] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+            webservices().StartSpinner()
+
+            print("+91\(txtmobileno.text!)")
+            Alamofire.request(webservices().baseurl + "sendotp", method: .post, parameters:["mobile_number":"+91\(txtmobileno.text!)"] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
                 
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
                         print(dic)
+                        let errormsg = dic.value(forKey:"message") as! String
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
+                            
                             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                             
                             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "OtpVC") as! OtpVC
                             nextViewController.mobileno = self.txtmobileno.text!
                             nextViewController.otpstring = ((dic.value(forKey:"data") as! NSDictionary).value(forKey:"otp") as! NSNumber).stringValue
+                            nextViewController.islogin = false
+
                             self.navigationController?.pushViewController(nextViewController, animated: true)
                         
+                        }
+                        else if(errormsg.contains("The mobile number has already been taken."))
+                        {
+                        
+                            self.apilogincall()
                         }
                         else
                         {
@@ -386,7 +400,8 @@ if(txtcountry.text == "")
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     
@@ -400,6 +415,72 @@ if(txtcountry.text == "")
         }
         
     }
+    func apilogincall()
+    {
+        if webservices().isConnectedToNetwork() == true
+        {
+            webservices().StartSpinner()
+
+            let parameters: Parameters = [
+               "mobile_number":"+91\(txtmobileno.text!)"
+                ]
+            
+            Alamofire.request(webservices().baseurl+"login", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<LoginResponse>) in
+                switch response.result{
+                    
+                case .success(let resp):
+                    print(resp)
+                     webservices().StopSpinner()
+                    if(resp.errorCode == 0)
+                    {
+                        
+                        UserDefaults.standard.set(resp.data.fname, forKey: "first")
+                        UserDefaults.standard.set(resp.data.lname, forKey: "Last")
+                        UserDefaults.standard.set(resp.data.email, forKey: "email")
+                        UserDefaults.standard.set(resp.data.mobileNumber, forKey: "mobile")
+                        UserDefaults.standard.set(resp.data.token, forKey: "token")
+                        UserDefaults.standard.set(resp.data.id, forKey: "Userid")
+
+                        
+                        
+                        UserDefaults.standard.synchronize()
+                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "OtpVC") as! OtpVC
+                        nextViewController.mobileno = self.txtmobileno.text!
+                        let num = resp.data.otp as! NSNumber
+                        nextViewController.otpstring = num.stringValue
+                        nextViewController.islogin = true
+                        
+                        self.navigationController?.pushViewController(nextViewController, animated: true)
+                        
+                        
+                    }
+                    else
+                    {
+                        let alert = webservices.sharedInstance.AlertBuilder(title: "", message: resp.message)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                    
+                    
+                case .failure(let err):
+                    webservices().StopSpinner()
+
+                    print(err.localizedDescription)
+                }
+            }
+            
+        }
+        else
+        {
+            
+            webservices.sharedInstance.nointernetconnection()
+            NSLog("No Internet Connection")
+        }
+        
+    }
+    
+    
     
     /*
     // MARK: - Navigation

@@ -27,7 +27,11 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+       if(UserDefaults.standard.object(forKey:"Userid") != nil)
+       {
         GetFavList()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -122,11 +126,12 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
     
     func GetFavList()
     {
-        if(UserDefaults.standard.object(forKey:"islogin") != nil)
+        if(UserDefaults.standard.object(forKey:"Userid") != nil)
         {
         
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -137,7 +142,7 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                     webservices().StopSpinner()
                     if let data = response.result.value{
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
@@ -158,7 +163,8 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     

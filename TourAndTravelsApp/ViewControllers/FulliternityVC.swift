@@ -17,7 +17,8 @@ class FulliternityVC: ButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonBarView.selectedBar.backgroundColor = .white
-        buttonBarView.backgroundColor = UIColor(red:1.00, green:0.15, blue:0.00, alpha:1.0)
+        buttonBarView.backgroundColor = UIColor(red:1.00, green:0.76, blue:0.03, alpha:1.0)
+
 
      
 

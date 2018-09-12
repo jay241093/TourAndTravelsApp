@@ -61,7 +61,8 @@ class NewSignUpVC: UIViewController {
     {
         if webservices().isConnectedToNetwork() == true
         {
-            
+            webservices().StartSpinner()
+
             let parameters: Parameters = [
                 "fname":txtfname.text!,
                 "lname": txtlname.text!,
@@ -75,6 +76,8 @@ class NewSignUpVC: UIViewController {
                     
                 case .success(let resp):
                     print(resp)
+                    webservices().StopSpinner()
+
                     if(resp.errorCode == 0)
                     {
                         UserDefaults.standard.set(resp.data.fname, forKey: "first")
@@ -82,7 +85,6 @@ class NewSignUpVC: UIViewController {
                         UserDefaults.standard.set(resp.data.email, forKey: "email")
                         UserDefaults.standard.set(resp.data.mobileNumber, forKey: "mobile")
                         UserDefaults.standard.set(resp.data.token, forKey: "token")
-                        UserDefaults.standard.set(1, forKey: "islogin")
                         
                         UserDefaults.standard.synchronize()
                         self.userdetails()
@@ -97,6 +99,8 @@ class NewSignUpVC: UIViewController {
                     
                     
                 case .failure(let err):
+                    webservices().StopSpinner()
+
                     print(err.localizedDescription)
                 }
             }
@@ -115,6 +119,7 @@ class NewSignUpVC: UIViewController {
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -124,8 +129,8 @@ class NewSignUpVC: UIViewController {
                 
                 switch(response.result) {
                 case .success(_):
-                    
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         let id = ((dic.value(forKey:"data") as! NSDictionary).value(forKey: "details") as! NSDictionary).value(forKey:"id") as! Int
@@ -138,7 +143,8 @@ class NewSignUpVC: UIViewController {
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     
@@ -156,6 +162,8 @@ class NewSignUpVC: UIViewController {
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -166,21 +174,21 @@ class NewSignUpVC: UIViewController {
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
-                            
-                            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                            
-                            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-                            self.navigationController?.pushViewController(nextViewController, animated: true)
+                     
+                            let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"package booked suceessfully. our agency will shortly contacts you. thank you for booking this package")
+                            self.present(alert, animated: true, completion: nil)
                         }
                         else
                         {
+                            
                             let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
                             self.present(alert, animated: true, completion: nil)
                         }
@@ -189,7 +197,8 @@ class NewSignUpVC: UIViewController {
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     

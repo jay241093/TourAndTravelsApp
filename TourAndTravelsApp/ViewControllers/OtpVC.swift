@@ -18,12 +18,13 @@ class OtpVC: UIViewController {
     @IBOutlet weak var btnresend: UIButton!
     
     @IBOutlet weak var lbltime: UILabel!
+    @IBOutlet weak var lblotp: UILabel!
     
     var timer : Timer?
     var count = 60
     var otpstring: String = ""
     var mobileno: String = ""
-
+    var islogin: Bool?
     @IBAction func resendaction(_ sender: Any) {
         ApiLogin()
         
@@ -33,7 +34,7 @@ class OtpVC: UIViewController {
         
         if(pinview.getPin() == otpstring)
         {
-           if(UserDefaults.standard.value(forKey:"islogin") != nil)
+            if(islogin)!
            {
             BookNow(id:(globalpackage?.id)!)
             
@@ -56,6 +57,8 @@ class OtpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        lblotp.text = "please Enter Otp sent on  \(mobileno)"
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         lbltime.text = "00:60"
         lblmobile.text = "Enter six digit code sent to  +91"
@@ -76,6 +79,7 @@ class OtpVC: UIViewController {
             btnresend.isUserInteractionEnabled = false
             if count == 0 {
                 timer?.invalidate()
+                self.otpstring = ""
                 lbltime.text = "00:00"
                 btnresend.isUserInteractionEnabled = true
             }
@@ -86,16 +90,21 @@ class OtpVC: UIViewController {
     
     // MARK: - user define functions
 
+  
+
     func ApiLogin()
     {
         if webservices().isConnectedToNetwork() == true
         {
-            Alamofire.request(webservices().baseurl + "sendotp", method: .post, parameters:["mobile_number":"919033324175"] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+            webservices().StartSpinner()
+
+            Alamofire.request(webservices().baseurl + "sendotp", method: .post, parameters:["mobile_number":"+91\(mobileno)"] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
                 
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
@@ -103,6 +112,7 @@ class OtpVC: UIViewController {
                         {
                             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
                             self.count = 60
+                            self.apilogincall()
                         }
                         else
                         {
@@ -114,6 +124,8 @@ class OtpVC: UIViewController {
                     break
                     
                 case .failure(_):
+                    webservices().StopSpinner()
+
                     
                     print(response.result.error)
                     break
@@ -129,10 +141,70 @@ class OtpVC: UIViewController {
         
     }
     
+    func apilogincall()
+    {
+        if webservices().isConnectedToNetwork() == true
+        {
+            webservices().StartSpinner()
+
+            let parameters: Parameters = [
+                "mobile_number":"+91\(mobileno)"
+            ]
+            
+            Alamofire.request(webservices().baseurl+"login", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<LoginResponse>) in
+                switch response.result{
+                    
+                case .success(let resp):
+                    print(resp)
+                    webservices().StopSpinner()
+
+                    if(resp.errorCode == 0)
+                    {
+                        
+                        UserDefaults.standard.set(resp.data.fname, forKey: "first")
+                        UserDefaults.standard.set(resp.data.lname, forKey: "Last")
+                        UserDefaults.standard.set(resp.data.email, forKey: "email")
+                        UserDefaults.standard.set(resp.data.mobileNumber, forKey: "mobile")
+                        UserDefaults.standard.set(resp.data.token, forKey: "token")
+                        UserDefaults.standard.set(resp.data.id, forKey: "Userid")
+                        
+                        
+                        
+                        UserDefaults.standard.synchronize()
+                let num = resp.data.otp as! NSNumber
+                    self.mobileno = num.stringValue
+                        
+                    }
+                    else
+                    {
+                        let alert = webservices.sharedInstance.AlertBuilder(title: "", message: resp.message)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                    
+                    
+                case .failure(let err):
+                    webservices().StopSpinner()
+
+                    print(err.localizedDescription)
+                }
+            }
+            
+        }
+        else
+        {
+            
+            webservices.sharedInstance.nointernetconnection()
+            NSLog("No Internet Connection")
+        }
+        
+    }
     func BookNow(id:Int)
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -143,7 +215,7 @@ class OtpVC: UIViewController {
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
                     if let data = response.result.value{
                         
                         let dic: NSDictionary = response.result.value as! NSDictionary
@@ -151,9 +223,11 @@ class OtpVC: UIViewController {
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
                             
-                            
-                            let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
+                        
+                            let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"package booked suceessfully. our agency will shortly contacts you. thank you for booking this package")
                             self.present(alert, animated: true, completion: nil)
+                            
+                            
                         }
                         else
                         {
@@ -165,7 +239,8 @@ class OtpVC: UIViewController {
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     

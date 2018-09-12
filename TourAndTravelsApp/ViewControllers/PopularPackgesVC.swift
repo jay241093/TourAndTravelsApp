@@ -8,9 +8,15 @@
 
 import UIKit
 import GooglePlaces
+import Alamofire
+import SDWebImage
 class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+    var hotdeals = [PackageListing]()
+    var featuredpackgeary = [PackageListing]()
+    var popularpackgesary = [PackageListing]()
+
     
-  
+    
     @IBOutlet weak var view1: UIView!
     
     @IBOutlet weak var view2: UIView!
@@ -34,11 +40,13 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     @IBOutlet weak var btn: UIButton!
     
     
+    
     @IBAction func ActionSearch(_ sender: Any) {
         
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         autocompleteController.autocompleteFilter?.type = .city
+        autocompleteController.tintColor = UIColor.gray
         let navigationController = UINavigationController(rootViewController: autocompleteController)
         navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(navigationController, animated: true, completion: nil)
@@ -50,6 +58,7 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
+GetPopularPackages()
         let nibName = UINib(nibName: "PopularListCell", bundle:nil)
         
         collectionview1.register(nibName, forCellWithReuseIdentifier: "cell")
@@ -81,8 +90,26 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
 // MARK: - Collection view delegate and datasource methods
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if(collectionView == collectionview1)
+        {
+         return hotdeals.count
+        }
+        else if(collectionView == collectionview2)
+        {
+            return featuredpackgeary.count
+
+        }
+          else if(collectionView == collectionview3)
+        {
+            return popularpackgesary.count
+
+        }
+      else
+        {
+            return 0
+            
+        }
         
-        return 10
         
     }
     
@@ -91,14 +118,85 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     
         var size = CGSize(width: 292, height:195)
         setShadow(view: cell.view)
-        
+        if(collectionView == collectionview1)
+        {
+          let dic = hotdeals[indexPath.row]
+            cell.lblname.text = dic.mobileName
+            cell.lblprice.text = "Rs. \(dic.price)"
+            var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            
+        }
+         else if(collectionView == collectionview2)
+        {
+            let dic = featuredpackgeary[indexPath.row]
+            cell.lblname.text = dic.mobileName
+            cell.lblprice.text = "Rs. \(dic.price)"
+            var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+        }
+        else if(collectionView == collectionview3)
+        {
+            let dic = popularpackgesary[indexPath.row]
+            cell.lblname.text = dic.mobileName
+            cell.lblprice.text = "Rs. \(dic.price)"
+            var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            
+        }
         return cell
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if(collectionView == collectionview1)
+        {
+            let dic = hotdeals[indexPath.row]
+            
+            AddACount(id: dic.id)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackageDetailVC") as! PackageDetailVC
+            nextViewController.package = dic
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+            
+        }
+        if(collectionView == collectionview2)
+        {
+            let dic = featuredpackgeary[indexPath.row]
+            
+            AddACount(id: dic.id)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackageDetailVC") as! PackageDetailVC
+            nextViewController.package = dic
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+            
+        }
+        
+        if(collectionView == collectionview3)
+        {
+            let dic = popularpackgesary[indexPath.row]
+            
+            AddACount(id: dic.id)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackageDetailVC") as! PackageDetailVC
+            nextViewController.package = dic
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+            
+        }
+        
+        
+        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
-        return CGSize(width: 292, height: 195)
+        return CGSize(width: 270, height: 195)
     }
     
     
@@ -107,7 +205,87 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
         // Dispose of any resources that can be recreated.
     }
     
+    func GetPopularPackages()
+    {
+        if webservices().isConnectedToNetwork() == true
+        {
+            
+            webservices().StartSpinner()
 
+            Alamofire.request(webservices().baseurl + "home", method: .post, parameters:[:], encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<HomeResponse>) in
+                switch response.result{
+                    
+                case .success(let resp):
+                    print(resp)
+                    if(resp.errorCode == 0)
+                    {
+                        webservices().StopSpinner()
+
+                    self.hotdeals = resp.data.hotDeals
+                        self.featuredpackgeary = resp.data.featuredPackages
+                        self.popularpackgesary = resp.data.latestPackages
+                        self.collectionview1.reloadData()
+                        self.collectionview2.reloadData()
+                        self.collectionview3.reloadData()
+
+
+
+                    }
+                    else
+                    {
+                        let alert = webservices.sharedInstance.AlertBuilder(title: "", message: resp.message)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                    
+                    
+                case .failure(let err):
+                    webservices().StopSpinner()
+
+                    print(err.localizedDescription)
+                }
+            }
+            
+        }
+        else
+        {
+            
+            webservices.sharedInstance.nointernetconnection()
+            NSLog("No Internet Connection")
+        }
+        
+    }
+    
+    
+    func AddACount(id:Int)
+    {
+        if webservices().isConnectedToNetwork() == true
+        {
+            webservices().StartSpinner()
+            Alamofire.request(webservices().baseurl + "package/add_views", method: .post, parameters:["package_id":id] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+                
+                switch(response.result) {
+                case .success(_):
+                    webservices().StopSpinner()
+                    break
+                    
+                case .failure(_):
+                    webservices().StopSpinner()
+
+                    print(response.result.error)
+                    break
+                    
+                }
+            }
+            
+        }
+        else
+        {
+            webservices.sharedInstance.nointernetconnection()
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -3,13 +3,7 @@
 //  TourAndTravelsApp
 //
 //  Created by Ravi Dubey on 8/29/18.
-//  Copyright © 2018 Ravi Dubey. All rights reserved.
-//
-
-// To parse the JSON, add this file to your project and do:
-//
-//   let packageList = try? newJSONDecoder().decode(PackageList.self, from: jsonData)
-
+//  Copyright © 2018 Ravi Dubey. All rights reserve
 import Foundation
 
 struct PackageList: Codable {
@@ -33,9 +27,11 @@ struct PackageListing: Codable {
     let startDate, endDate, cities, description: String?
     let longDescription, termsConditions, cancellationPolicy: String
     var isFavourite: Bool
+    let categories, tags: String
     let packageIty: [PackageIty]
     let packageImages: [PackageImage]
     let allCities: [AllCity]
+    let packageReviews: [PackageReview]
     let agency: Agency
     
     enum CodingKeys: String, CodingKey {
@@ -56,9 +52,11 @@ struct PackageListing: Codable {
         case termsConditions = "terms_conditions"
         case cancellationPolicy = "cancellation_policy"
         case isFavourite = "is_favourite"
+        case categories, tags
         case packageIty = "package_ity"
         case packageImages = "package_images"
         case allCities = "all_cities"
+        case packageReviews = "package_reviews"
         case agency
     }
 }
@@ -86,7 +84,8 @@ struct AllCity: Codable {
 
 struct PackageImage: Codable {
     let id, packageID: Int
-    let path, createdAt, updatedAt: String
+    let path: String
+    let createdAt, updatedAt: AtedAt
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -97,11 +96,17 @@ struct PackageImage: Codable {
     }
 }
 
+enum AtedAt: String, Codable {
+    case the20180910130118 = "2018-09-10 13:01:18"
+    case the20180910145722 = "2018-09-10 14:57:22"
+    case the20180911112939 = "2018-09-11 11:29:39"
+}
+
 struct PackageIty: Codable {
     let id, day: Int
     let title, text, inclusions, imagePath: String
     let packageID: Int
-    let hotelID, flightID: String
+    let hotelID, flightID: String?
     
     enum CodingKeys: String, CodingKey {
         case id, day, title, text, inclusions
@@ -109,5 +114,21 @@ struct PackageIty: Codable {
         case packageID = "package_id"
         case hotelID = "hotel_id"
         case flightID = "flight_id"
+    }
+}
+
+struct PackageReview: Codable {
+    let id, packageID: Int
+    let rating:Double
+    let title, text, name: String
+    let status: Int
+    let createdAt, updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case packageID = "package_id"
+        case rating, title, text, name, status
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }

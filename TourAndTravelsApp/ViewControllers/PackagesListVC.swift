@@ -29,6 +29,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
 
     override func viewDidLoad() {
         super.viewDidLoad()
+     self.title = cityname
       if(CityName != "")
       {
         
@@ -37,10 +38,13 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
       {
         CityName = cityname!
         }
-        let display = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(FilterTapped))
      //   self.tblview.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
 
+        let display = UIBarButtonItem(image: UIImage(named:"Filter"), style:.plain, target: self, action:  #selector(FilterTapped))
         navigationItem.rightBarButtonItems = [display]
+        
+   
+
         // Do any additional setup after loading the view.
     }
     
@@ -86,6 +90,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         cell.btnday.layer.borderWidth = 1
          cell.btnday.clipsToBounds = true
         cell.lblname.text = dic.name
+        
+        
         cell.lblprice.text = "Rs " + String(dic.price)
         cell.btnlike.addTarget(self, action: #selector(FavouriteTap), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
@@ -96,7 +102,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         cell.btnlike.layer.borderColor = UIColor.orange.cgColor
         
         
-        if(UserDefaults.standard.object(forKey:"islogin") != nil)
+        if(UserDefaults.standard.object(forKey:"Userid") != nil)
         {
              cell.btnlike.isEnabled = true
         }
@@ -164,12 +170,14 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
 
+            webservices().StartSpinner()
 
             Alamofire.request(webservices().baseurl + "customer/add_favourites", method: .post, parameters:["user_id":UserDefaults.standard.value(forKey: "Userid") as! Int, "package_id":id] , encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
 
                 switch(response.result) {
                 case .success(_):
 
+                    webservices().StopSpinner()
 
                     if let data = response.result.value{
                         
@@ -192,6 +200,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
                     break
 
                 case .failure(_):
+                    webservices().StopSpinner()
 
                     print(response.result.error)
                     break
@@ -211,6 +220,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -220,7 +231,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
                 
                 switch(response.result) {
                 case .success(_):
-                    
+                    webservices().StopSpinner()
+
                     
                     if let data = response.result.value{
                         
@@ -243,7 +255,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     
@@ -265,6 +278,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         if webservices().isConnectedToNetwork() == true
         {
             
+            webservices().StartSpinner()
+
             var parameter :Parameters =
                 [:]
             print(sortary.componentsJoined(by:","))
@@ -276,7 +291,7 @@ print(CityName)
 
 
 
-            if(UserDefaults.standard.object(forKey:"islogin") != nil)
+            if(UserDefaults.standard.object(forKey:"Userid") != nil)
             {
                 
                 parameter["user_id"] = UserDefaults.standard.value(forKey:"Userid") as! Int
@@ -334,8 +349,11 @@ print(CityName)
                 switch response.result{
                     
                 case .success(let resp):
+                    webservices().StopSpinner()
+
                     if(resp.errorCode == 0)
                     {
+
                         self.packagelist = resp.data
 
                         if(resp.data.count == 0)
@@ -362,6 +380,8 @@ print(CityName)
                     
                     
                 case .failure(let err):
+                    webservices().StopSpinner()
+
                     print(err.localizedDescription)
                 }
             }
@@ -381,15 +401,18 @@ print(CityName)
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             Alamofire.request(webservices().baseurl + "package/add_views", method: .post, parameters:["package_id":id] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
                 
                 switch(response.result) {
                 case .success(_):
-                 
+                 webservices().StopSpinner()
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     

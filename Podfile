@@ -16,6 +16,11 @@ target 'TourAndTravelsApp' do
    pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'SVPinView', '~> 1.0'
+   pod 'PKHUD'
+   pod 'FloatRatingView', '~> 2.0.0'
+
+   
+
 
   
   

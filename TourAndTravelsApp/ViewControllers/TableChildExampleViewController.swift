@@ -58,6 +58,8 @@ var index = 0
             UserDefaults.standard.synchronize()
         }
         tableView.register(UINib(nibName: "HotelCheckinCell", bundle: Bundle.main), forCellReuseIdentifier:"cell1")
+        tableView.register(UINib(nibName: "DetailCellHistory", bundle: Bundle.main), forCellReuseIdentifier:"cell")
+
         tableView.tag = index
        
         tableView.estimatedRowHeight = 60.0
@@ -89,20 +91,20 @@ var index = 0
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-        var cell :HotelCheckinCell = tableView.dequeueReusableCell(withIdentifier:"cell1", for: indexPath) as! HotelCheckinCell
+        var cell :DetailCellHistory = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! DetailCellHistory
 
         if(index <= (globalpackage?.packageIty.count)!)
            {
-            cell =  tableView.dequeueReusableCell(withIdentifier:"cell1", for: indexPath) as! HotelCheckinCell
+            cell =  tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! DetailCellHistory
 
             setShadow(view: cell.view)
-//            cell.lblname.text = globalpackage?.packageItinerary[index-1].title
-//            cell.lbldes.text = "Description :" +  (globalpackage?.packageItinerary[index-1].text)!
-//            cell.lbldes.sizeToFit()
-////            var url = "http://13.58.57.113/storage/app/" +  (globalpackage?.packageItinerary[index-1].imagePath)!
-////            cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
-//            var Inclustion = globalpackage?.packageItinerary[index-1].inclusions as! String
-//            cell.lblinclusions.text =  "inclusions : \(Inclustion)"
+            cell.lblname.text = globalpackage?.packageIty[index-1].title
+            cell.lbldes.text = "Description :" +  (globalpackage?.packageIty[index-1].text)!
+            cell.lbldes.sizeToFit()
+//            var url = "http://13.58.57.113/storage/app/" +  (globalpackage?.packageItinerary[index-1].imagePath)!
+//            cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            var Inclustion = globalpackage?.packageIty[index-1].inclusions as! String
+            cell.lblinclusions.text =  "inclusions : \(Inclustion)"
           
             }
 

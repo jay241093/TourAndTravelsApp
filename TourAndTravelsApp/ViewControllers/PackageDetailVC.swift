@@ -42,26 +42,12 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     @IBAction func BookNowAction(_ sender: Any) {
         
       
-        let alertController = UIAlertController(title: nil, message: "Please Login to Book Inquiry", preferredStyle: .alert)
-        
-        // Create the actions
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-            UIAlertAction in
+   
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NewLoginVc") as! NewLoginVc
             self.navigationController?.pushViewController(nextViewController, animated: true)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
-            UIAlertAction in
-            NSLog("Cancel Pressed")
-        }
-        
-        // Add the actions
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        // Present the controller
-        self.present(alertController, animated: true, completion: nil)
+
+
 
     }
     
@@ -69,11 +55,12 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.layoutIfNeeded()
         globalpackage = package
         tableView.reloadData()
         imgview.addGestureRecognizer(tap)
-        self.title = package?.name
+        self.title = package?.mobileName
     
         tableView.parallaxHeader.view = headerView // You can set the parallax header view from the floating view
         tableView.parallaxHeader.height = 250
@@ -125,7 +112,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 11 + (package?.packageReviews.count)!
     }
     
     
@@ -171,14 +158,24 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             cell.btnhotel.addTarget(self, action: #selector(PackageDetailVC.showHotel), for: .touchUpInside)
             if(package?.isFavourite)!
             {
-                
-                cell.btnlike.setBackgroundImage(#imageLiteral(resourceName: "heart-solid (1)"), for: .normal)
+            cell.btnlike.setBackgroundImage(#imageLiteral(resourceName: "heart-solid (1)"), for: .normal)
             }
             else
             {
                 cell.btnlike.setBackgroundImage(#imageLiteral(resourceName: "heart-regular-1"), for: .normal)
                 
             }
+            
+            if(UserDefaults.standard.object(forKey:"Userid") != nil)
+            {
+                cell.btnlike.isEnabled = true
+            }
+            else
+            {
+                cell.btnlike.isEnabled = false
+                
+            }
+            
              cell.btnlike.tag = indexPath.row
             
             cell.btnlike.addTarget(self, action: #selector(LikeAction), for: .touchUpInside)
@@ -281,7 +278,15 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             setShadow(view: cell.view)
             return cell
         }
-       else
+        else if(indexPath.row == 9)
+        {
+            
+            let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell8", for: indexPath) as!  SearchCityCell
+            cell.selectionStyle = .none
+            
+            return cell
+        }
+       else if(indexPath.row == 11 + (package?.packageReviews.count)! - 1)
         {
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell7", for: indexPath) as!  SearchCityCell
             setShadow(view: cell.voew)
@@ -289,17 +294,34 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             cell.selectionStyle = .none
 
             let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
-            
+             
             let attributedString = try! NSAttributedString(data: htmlData!, options: options, documentAttributes: nil)
             
             cell.lbldes.text = attributedString.string
             cell.btnreadmore.tag = indexPath.row
+            cell.selectionStyle = .none
+
             // cell.lbldes.sizeToFit()
             cell.btnreadmore.addTarget(self, action: #selector(readmore), for: .touchUpInside)
             return cell
 
         }
+       else
         
+        {
+            let cell:ReviewCell = tableView.dequeueReusableCell(withIdentifier: "cell9", for: indexPath) as!  ReviewCell
+            
+            for var i in 0...(package?.packageReviews.count)!-1
+            {
+                cell.ratingview.rating = Float((package?.packageReviews[i].rating)!)
+                cell.lblname.text = package?.packageReviews[i].name
+                cell.lblcomment.text =  package?.packageReviews[i].text
+            }
+        
+            return cell
+            
+            
+        }
     }
     @objc func readmore(sender:UIButton)
     {
@@ -347,11 +369,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     @objc func showflight(sender:UIButton)
     {
-        
-        
         tableView.scrollToRow(at: IndexPath(row: 8, section: 0), at:.bottom, animated: true)
-      
-    }
+   }
     
     
     
@@ -386,6 +405,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -396,7 +417,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         
                         let dic: NSDictionary = response.result.value as! NSDictionary
@@ -417,7 +439,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
                     print(response.result.error)
                     break
                     
@@ -436,6 +458,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -446,14 +470,15 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
-                            
+
                            
                             let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
                             self.present(alert, animated: true, completion: nil)
@@ -468,7 +493,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     
@@ -487,6 +513,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
+
             let token = UserDefaults.standard.value(forKey: "token") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
@@ -497,14 +525,14 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                 switch(response.result) {
                 case .success(_):
                     
-                    
+                    webservices().StopSpinner()
+
                     if let data = response.result.value{
                         
                         let dic: NSDictionary = response.result.value as! NSDictionary
                         
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
-                            
                             
                             let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
                             self.present(alert, animated: true, completion: nil)
@@ -519,7 +547,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                     break
                     
                 case .failure(_):
-                    
+                    webservices().StopSpinner()
+
                     print(response.result.error)
                     break
                     

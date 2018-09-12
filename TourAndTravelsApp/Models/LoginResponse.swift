@@ -6,10 +6,14 @@
 //  Copyright © 2018 Ravi Dubey. All rights reserved.
 //
 
+// To parse the JSON, add this file to your project and do:
+//
+//   let loginResponse = try? newJSONDecoder().decode(LoginResponse.self, from: jsonData)
+
 import Foundation
 
 struct LoginResponse: Codable {
-    let data: DataClass
+    let data: login
     let errorCode: Int
     let message: String
     
@@ -20,13 +24,14 @@ struct LoginResponse: Codable {
     }
 }
 
-struct DataClass: Codable {
-    let fname, lname, mobileNumber, email: String?
-    let token: String?
+struct login: Codable {
+    let id, otp: Int
+    let mobileNumber, fname, lname, email: String
+    let token: String
     
     enum CodingKeys: String, CodingKey {
-        case fname, lname
+        case id, otp
         case mobileNumber = "mobile_number"
-        case email, token
+        case fname, lname, email, token
     }
 }

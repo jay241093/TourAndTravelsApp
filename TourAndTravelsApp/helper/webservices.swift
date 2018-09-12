@@ -8,7 +8,7 @@
 
 import UIKit
 import SystemConfiguration
-
+import PKHUD
 class webservices: NSObject {
 
     var baseurl =  "http://13.58.57.113/api/"
@@ -62,5 +62,14 @@ class webservices: NSObject {
         return ret
         
     }
+    func StartSpinner() {
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+    }
+    
+    func StopSpinner() {
+        PKHUD.sharedHUD.hide(true)
+    }
+
     
 }

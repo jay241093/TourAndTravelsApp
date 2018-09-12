@@ -11,7 +11,6 @@
 import UIKit
 
 class SideMenuVc: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    var sections = sectionsData
 
     @IBOutlet weak var tblview: UITableView!
 var sidemenuname = ["Profile" , "My Shortlists"]
@@ -21,7 +20,7 @@ var sidemenuname = ["Profile" , "My Shortlists"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(UserDefaults.standard.object(forKey:"islogin") != nil)
+        if(UserDefaults.standard.object(forKey:"Userid") != nil)
         {
             let name = UserDefaults.standard.value(forKey:"first") as! String
             let lname = UserDefaults.standard.value(forKey:"Last") as! String

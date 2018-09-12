@@ -39,11 +39,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     @IBAction func ApplyAction(_ sender: Any) {
         
-        print(Finalsortary)
-        print(FinalDurationAry)
-        print(FinalBudgetAry)
-        print(FinalPricAary)
-        print(FinalThemeAry)
+      
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackagesListVC") as! PackagesListVC
@@ -57,6 +53,24 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     }
     
+    @IBAction func clearaction(_ sender: Any) {
+        tblview.reloadData()
+        Finalsortary.removeAllObjects()
+        FinalBudgetAry.removeAllObjects()
+
+        FinalPricAary.removeAllObjects()
+
+        FinalDurationAry.removeAllObjects()
+        FinalThemeAry.removeAllObjects()
+        for var j in 0...5{
+        for var i in 0..<tblview.numberOfRows(inSection: j) {
+           
+                var cell: CheckBoxCell? = tblview.cellForRow(at: IndexPath(row: i, section:j)) as! CheckBoxCell
+                cell?.checkbox.isChecked = false
+            
+        }
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -345,10 +359,12 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
     {
         if webservices().isConnectedToNetwork() == true
         {
+            webservices().StartSpinner()
             Alamofire.request(webservices().baseurl + "categories", method: .post, parameters:[:], encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<ThemeList>) in
                 switch response.result{
                     
                 case .success(let resp):
+                     webservices().StopSpinner()
                     if(resp.errorCode == 0)
                     {
                        
@@ -380,6 +396,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
                     
                     
                 case .failure(let err):
+                    webservices().StopSpinner()
                     print(err.localizedDescription)
                 }
             }

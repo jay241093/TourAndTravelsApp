@@ -22,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       
         IQKeyboardManager.shared.enable = true
+        
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.94, green:0.22, blue:0.06, alpha:1.0)
+
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UIBarButtonItem.appearance().tintColor = .white
         // Override point for customization after application launch.
         return true
     }
