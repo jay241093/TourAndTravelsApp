@@ -19,6 +19,8 @@ class NewSignUpVC: UIViewController {
     
     @IBOutlet weak var txtemail: SkyFloatingLabelTextField!
     
+    var FromLogin :Int = 0
+    
     @IBAction func SignUPaction(_ sender: Any) {
         if(txtfname.text == "")
         {
@@ -136,9 +138,23 @@ class NewSignUpVC: UIViewController {
                         let id = ((dic.value(forKey:"data") as! NSDictionary).value(forKey: "details") as! NSDictionary).value(forKey:"id") as! Int
                         
                         UserDefaults.standard.set(id, forKey: "Userid")
-                      
-                        self.BookNow(id: (globalpackage?.id)!)
+                        if(self.FromLogin == 1)
+                      {
                         
+                        for controller in self.navigationController!.viewControllers as Array {
+                            if controller.isKind(of: PopularPackgesVC.self) {
+                                self.navigationController!.popToViewController(controller, animated: true)
+                                break
+                            }
+                        }
+                        let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Register Successfully")
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        }
+                        else
+                      {
+                        self.BookNow(id: (globalpackage?.id)!)
+                        }
                     }
                     break
                     
@@ -182,7 +198,12 @@ class NewSignUpVC: UIViewController {
                         
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
-                     
+                            for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: PopularPackgesVC.self) {
+                                    self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
                             let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"package booked suceessfully. our agency will shortly contacts you. thank you for booking this package")
                             self.present(alert, animated: true, completion: nil)
                         }

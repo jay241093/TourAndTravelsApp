@@ -1,31 +1,27 @@
 //
-//  MainVC.swift
-//  PlanMyTrip
+//  ContactUsVC.swift
+//  TourAndTravelsApp
 //
-//  Created by Ravi Dubey on 8/21/18.
+//  Created by Ravi Dubey on 9/13/18.
 //  Copyright © 2018 Ravi Dubey. All rights reserved.
 //
 
 import UIKit
-func setShadow(view: UIView)
-{
-    view.layer.masksToBounds = false
-    view.layer.shadowColor = UIColor.lightGray.cgColor
-    view.layer.shadowOpacity = 0.5
-    view.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-    view.layer.shadowRadius = 4
-}
-class MainVC: UIViewController {
-
-    @IBOutlet weak var segement: UISegmentedControl!
+import WebKit
+class ContactUsVC: UIViewController {
     
-// MARK: - IBAction Methods
-    
-  
+    @IBOutlet weak var btnmenu: UIButton!
+    @IBOutlet weak var webview: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        webview.loadRequest(URLRequest(url: URL(string: "http://13.58.57.113/contact")!))
 
-        
+        if revealViewController() != nil
+        {
+            btnmenu.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+            
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         // Do any additional setup after loading the view.
     }
 

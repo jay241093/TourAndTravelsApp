@@ -30,6 +30,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
      self.title = cityname
+        
       if(CityName != "")
       {
         
@@ -92,7 +93,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         cell.lblname.text = dic.name
         
         
-        cell.lblprice.text = "Rs " + String(dic.price)
+        cell.lblprice.text = "Rs " + dic.price!
         cell.btnlike.addTarget(self, action: #selector(FavouriteTap), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
         cell.view.layer.cornerRadius = 10.0
@@ -282,16 +283,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
 
             var parameter :Parameters =
                 [:]
-            print(sortary.componentsJoined(by:","))
-            print(DurationAry.componentsJoined(by:":"))
-            print(BudgetAry.componentsJoined(by:","))
-            print(PricAary.componentsJoined(by:":"))
-            print(ThemeAry.componentsJoined(by:","))
-print(CityName)
-
-
-
-            if(UserDefaults.standard.object(forKey:"Userid") != nil)
+          if(UserDefaults.standard.object(forKey:"Userid") != nil)
             {
                 
                 parameter["user_id"] = UserDefaults.standard.value(forKey:"Userid") as! Int
@@ -326,7 +318,7 @@ print(CityName)
 
                 if(sortary.count > 0)
                 {
-                    parameter["sort_by"] = sortary.componentsJoined(by:",")
+                parameter["sort_by"] = sortary.componentsJoined(by:",")
                 }
                 if(DurationAry.count > 0)
                 {

@@ -11,8 +11,8 @@ import XLPagerTabStrip
 
 
 class FulliternityVC: ButtonBarPagerTabStripViewController {
-
     
+    var isfromlogin : Int = 0
     var package : PackageListing?
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -76,8 +76,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         pagecontrol.contentHorizontalAlignment = .center
         pagecontrol.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         headerView.bringSubview(toFront: pagecontrol)
-        let str = package?.price as! NSNumber
-        lblprice.text =   "Rs \(str.stringValue)"
+        let str = package?.price
+        lblprice.text =   "Rs \(str!)"
         
         
         // Do any additional setup after loading the view.
@@ -175,8 +175,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         let night = package?.totalNights as! NSNumber
 
             cell.lblDays.text =  night.stringValue + " N" + day.stringValue + " D " 
-     let num = package?.price as! NSNumber
-   cell.lblprice.text =  "Rs." + num.stringValue
+   //  let num = package?.price as! NSNumber
+            cell.lblprice.text =  "Rs." + (package?.price)!
             cell.btnflight.addTarget(self, action: #selector(PackageDetailVC.showflight), for: .touchUpInside)
             cell.btnhotel.addTarget(self, action: #selector(PackageDetailVC.showHotel), for: .touchUpInside)
             if(package?.isFavourite)!
@@ -203,6 +203,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
             cell.btnlike.addTarget(self, action: #selector(LikeAction), for: .touchUpInside)
             cell.lblDays.backgroundColor = UIColor(patternImage: UIImage(named: "orange")!)
+             cell.btnshare.addTarget(self, action: #selector(Shareaction), for: .touchUpInside)
 
         return cell
         }
@@ -609,6 +610,15 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             webservices.sharedInstance.nointernetconnection()
         }
         
+    }
+    @objc func Shareaction(sender:UIButton)
+    {
+        let text = "Package Name: \(package?.name)\n Agency Name: \(package?.agency.name) \n Package Discription: \(package?.description) \n Package Price : \(package?.price!)"
+       
+        let shareAll = [text]
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
  
     func Addreview(package: PackageListing) {

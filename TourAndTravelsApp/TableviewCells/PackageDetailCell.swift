@@ -12,6 +12,7 @@ class PackageDetailCell: UITableViewCell {
 
     @IBOutlet weak var lbllocation: UILabel!
     
+    @IBOutlet weak var btnshare: UIButton!
     @IBOutlet weak var lblexpireOn: UILabel!
     
     @IBOutlet weak var btnlike: UIButton!

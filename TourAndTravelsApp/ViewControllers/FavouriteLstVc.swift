@@ -13,6 +13,8 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
 
     
     var favary = NSMutableArray()
+    
+    var packageList = [PackageListing]()
     @IBOutlet weak var menu: UIButton!
     
     @IBOutlet weak var tblview: UITableView!
@@ -36,19 +38,19 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.favary.count
+        return packageList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : FavouriteCell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! FavouriteCell
-        let dic = favary.object(at: indexPath.row) as! NSDictionary
-        var urlnew =  dic.value(forKey:"primary_image") as! String
+        let dic =  packageList[indexPath.row]
+        var urlnew =  dic.primaryImage
         var url = "http://13.58.57.113/storage/app/" + urlnew
 
         cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
-        cell.lbldays.text = String(dic.value(forKey: "total_days") as! Int) + " Days " + String(dic.value(forKey: "total_nights") as! Int) + " Night"
-        cell.lblname.text = dic.value(forKey: "name") as! String
-        cell.lblprice.text =  "Rs " + (dic.value(forKey:"price") as! NSNumber).stringValue
+        cell.lbldays.text = String(dic.totalDays) + " Days " + String(dic.totalNights) + " Night"
+        cell.lblname.text = dic.name
+        cell.lblprice.text =  "Rs " + (dic.price)!
         setShadow(view: cell.view)
         return cell
     }
@@ -63,15 +65,25 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            let dic = favary.object(at: indexPath.row) as! NSDictionary
-            
-            RemoveFavourite(id: dic.value(forKey:"id") as! Int)
+            let dic =  packageList[indexPath.row]
+
+            RemoveFavourite(id: dic.id)
 
 
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let dic =  packageList[indexPath.row]
+
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PackageDetailVC") as! PackageDetailVC
+        nextViewController.package = dic
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+        
+    }
     
     func RemoveFavourite(id:Int)
     {
@@ -137,47 +149,47 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
             //  print( UserDefaults.standard.value(forKey: "Token") as! String)
             
             
-            Alamofire.request(webservices().baseurl + "customer/me", method: .post, parameters:[:] , encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
-                
-                switch(response.result) {
-                case .success(_):
+            Alamofire.request(webservices().baseurl + "customer/me", method: .post, parameters:[:], encoding: JSONEncoding.default, headers: headers).responseJSONDecodable{(response:DataResponse<UserMeResponse>) in
+                switch response.result{
                     
-                     webservices().StopSpinner()
-                    if let data = response.result.value{
-                        let dic: NSDictionary = response.result.value as! NSDictionary
-                        
-                       
-                        let ary = (dic.value(forKey:"data") as! NSDictionary).value(forKey: "favourites") as! NSArray
-                      if(ary.count != 0)
-                      {
-                        self.favary = ary.mutableCopy() as! NSMutableArray
-                        self.tblview.reloadData()
+                case .success(let resp):
+                    print(resp)
+                    if(resp.errorCode == 0)
+                    {
+                        webservices().StopSpinner()
+                       self.packageList = resp.data.favourites
+                        if(resp.data.favourites.count == 0)
+                        {
+                            
+                            let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"No Favourite package found")
+                            self.present(alert, animated: true, completion: nil)
                         }
-                        else
-                      {
-                        let alert = webservices.sharedInstance.AlertBuilder(title:"", message: "No Favourite Packges Found")
+                        
+                        
+                        self.tblview.reloadData()
+                    }
+                    else
+                    {
+                        let alert = webservices.sharedInstance.AlertBuilder(title: "", message: resp.message)
                         self.present(alert, animated: true, completion: nil)
                         
-                        }
                     }
-                    break
                     
-                case .failure(_):
+                    
+                case .failure(let err):
                     webservices().StopSpinner()
-
-                    print(response.result.error)
-                    break
                     
+                    print(err.localizedDescription)
                 }
-            }
             
+        }
         }
         else
         {
             webservices.sharedInstance.nointernetconnection()
         }
+        
         }
-    
     }
     
     override func didReceiveMemoryWarning() {

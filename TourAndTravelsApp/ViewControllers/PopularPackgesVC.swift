@@ -10,12 +10,16 @@ import UIKit
 import GooglePlaces
 import Alamofire
 import SDWebImage
-class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+import FSPagerView
+class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout ,FSPagerViewDelegate , FSPagerViewDataSource{
+   
     var hotdeals = [PackageListing]()
     var featuredpackgeary = [PackageListing]()
     var popularpackgesary = [PackageListing]()
+    var Offerary = [Offer]()
+    var isfromlogin: Int = 0
+    var banners = [String]()
 
-    
     
     @IBOutlet weak var view1: UIView!
     
@@ -26,6 +30,13 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     @IBOutlet weak var view4: UIView!
     
     @IBOutlet weak var view5: UIView!
+    
+    @IBOutlet weak var pagerview: FSPagerView!{
+        didSet {
+            self.pagerview.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+           // self.pagerview.itemSize = .zero
+        }
+    }
     
     @IBOutlet weak var collectionview1: UICollectionView!
     
@@ -60,33 +71,41 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        let nibName = UINib(nibName: "PopularListCell", bundle:nil)
         
-        collectionview1.register(nibName, forCellWithReuseIdentifier: "cell")
-        collectionview2.register(nibName, forCellWithReuseIdentifier: "cell")
-        collectionview3.register(nibName, forCellWithReuseIdentifier: "cell")
-        collectionview4.register(nibName, forCellWithReuseIdentifier: "cell")
-        collecitonview5.register(nibName, forCellWithReuseIdentifier: "cell")
-
-        setShadow(view: view1)
-        setShadow(view: view2)
-        setShadow(view: view3)
-
-        setShadow(view: view4)
-
-        setShadow(view: view5)
-        let button = UIBarButtonItem(barButtonSystemItem:.search, target: self, action: #selector(PopularPackgesVC.ActionSearch))
-     
-        navigationController?.navigationItem.rightBarButtonItem = button
-
         if revealViewController() != nil
         {
             btn.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+pagerview.delegate = self
+        pagerview.dataSource = self
+if(isfromlogin == 1)
+{
+    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NewLoginVc") as! NewLoginVc
+    nextViewController.FromLogin = isfromlogin
+    self.navigationController?.pushViewController(nextViewController, animated: true)
+
+        }
+        
+
+        let nibName = UINib(nibName: "PopularListCell", bundle:nil)
+        let nibName1 = UINib(nibName: "BannerCell", bundle:nil)
+
+        collectionview1.register(nibName, forCellWithReuseIdentifier: "cell")
+        collectionview2.register(nibName, forCellWithReuseIdentifier: "cell")
+        collectionview3.register(nibName, forCellWithReuseIdentifier: "cell")
+        collectionview4.register(nibName1, forCellWithReuseIdentifier: "cell")
+
+        setShadow(view: view1)
+        setShadow(view: view2)
+        setShadow(view: view3)
+
+        let button = UIBarButtonItem(barButtonSystemItem:.search, target: self, action: #selector(PopularPackgesVC.ActionSearch))
+     
+        navigationController?.navigationItem.rightBarButtonItem = button
+
         
         // Do any additional setup after loading the view.
     }
@@ -107,6 +126,11 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
             return popularpackgesary.count
 
         }
+        else if(collectionView == collectionview4)
+        {
+            return Offerary.count
+            
+        }
       else
         {
             return 0
@@ -117,37 +141,66 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PopularListCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! PopularListCell
+    
     
         var size = CGSize(width: 292, height:195)
-        setShadow(view: cell.view)
         if(collectionView == collectionview1)
         {
+                let cell: PopularListCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! PopularListCell
           let dic = hotdeals[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "Rs. \(dic.price)"
+            cell.lblprice.text = "Rs. \(dic.price!)"
             var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            setShadow(view: cell.view)
+
+            return cell
+
             
         }
          else if(collectionView == collectionview2)
         {
+            let cell: PopularListCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! PopularListCell
+
             let dic = featuredpackgeary[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "Rs. \(dic.price)"
+            cell.lblprice.text = "Rs. \(dic.price!)"
             var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            setShadow(view: cell.view)
+
+            return cell
+
         }
         else if(collectionView == collectionview3)
         {
+            let cell: PopularListCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! PopularListCell
+
             let dic = popularpackgesary[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "Rs. \(dic.price)"
+            cell.lblprice.text = "Rs. \(dic.price!)"
             var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            setShadow(view: cell.view)
+
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
-            
+            return cell
+
         }
-        return cell
+        else
+        {
+            let cell: BannerCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! BannerCell
+            let dic = Offerary[indexPath.row]
+            var url = "http://13.58.57.113/storage/app/" + dic.imagePath
+
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.lblname.text = dic.title
+            cell.lbldes.text = dic.description
+            cell.lbltag.text = dic.code
+            setShadow(view: cell.view1)
+            cell.view1.layer.cornerRadius = 12.0
+            return cell
+        }
+            
         
     }
     
@@ -191,16 +244,41 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
             self.navigationController?.pushViewController(nextViewController, animated: true)
             
         }
-        
-        
-        
-        
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       
+        if(collectionView == collectionview4)
+        {
+            return CGSize(width: 213, height: 250)
+
+        }
+        else
+        {
         return CGSize(width: 270, height: 195)
+        }
     }
+    
+    
+    
+    func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return banners.count
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+        var url = "http://13.58.57.113/storage/app/" + (banners[index])
+        
+        cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+        cell.imageView?.contentMode = .scaleAspectFill
+        cell.imageView?.clipsToBounds = true
+        cell.backgroundView?.backgroundColor = UIColor.clear
+        return cell
+    }
+    
+    
+    
+
     
     
     override func didReceiveMemoryWarning() {
@@ -214,8 +292,15 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
         {
             
             webservices().StartSpinner()
-
-            Alamofire.request(webservices().baseurl + "home", method: .post, parameters:[:], encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<HomeResponse>) in
+            var parameters : Parameters = [:]
+            
+            if(UserDefaults.standard.object(forKey:"Userid") != nil)
+            {
+                parameters["user_id"] = UserDefaults.standard.object(forKey:"Userid") as! Int
+            }
+            
+        
+            Alamofire.request(webservices().baseurl + "home", method: .post, parameters:parameters, encoding: JSONEncoding.default, headers: nil).responseJSONDecodable{(response:DataResponse<HomeResponse>) in
                 switch response.result{
                     
                 case .success(let resp):
@@ -227,10 +312,13 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
                     self.hotdeals = resp.data.hotDeals
                         self.featuredpackgeary = resp.data.featuredPackages
                         self.popularpackgesary = resp.data.latestPackages
+                        self.Offerary = resp.data.offers
+                        self.banners = resp.data.banners
                         self.collectionview1.reloadData()
                         self.collectionview2.reloadData()
                         self.collectionview3.reloadData()
-
+                        self.collectionview4.reloadData()
+                        self.pagerview.reloadData()
 
 
                     }

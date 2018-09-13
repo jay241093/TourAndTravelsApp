@@ -25,6 +25,10 @@ class SearchCityCell: UITableViewCell {
     
     @IBOutlet weak var btnviewmore: UIButton!
     
+    @IBOutlet weak var lblsidemenu: UILabel!
+    
+    @IBOutlet weak var imgview: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

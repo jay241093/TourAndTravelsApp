@@ -19,7 +19,8 @@ class OtpVC: UIViewController {
     
     @IBOutlet weak var lbltime: UILabel!
     @IBOutlet weak var lblotp: UILabel!
-    
+    var FromLogin : Int = 0
+
     var timer : Timer?
     var count = 60
     var otpstring: String = ""
@@ -36,13 +37,27 @@ class OtpVC: UIViewController {
         {
             if(islogin)!
            {
+            if(FromLogin == 1)
+            {
+                for controller in self.navigationController!.viewControllers as Array {
+                    if controller.isKind(of: PopularPackgesVC.self) {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                        break
+                    }
+                }
+                let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Login Successfully")
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
             BookNow(id:(globalpackage?.id)!)
-            
+            }
             }
             else
            {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NewSignUpVC") as! NewSignUpVC
+            nextViewController.FromLogin = self.FromLogin
             self.navigationController?.pushViewController(nextViewController, animated: true)
             }
         }
@@ -58,10 +73,8 @@ class OtpVC: UIViewController {
         super.viewDidLoad()
      
         lblotp.text = "please Enter Otp sent on  \(mobileno)"
-        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         lbltime.text = "00:60"
-        lblmobile.text = "Enter six digit code sent to  +91"
         
         setShadow(view:view1)
         
@@ -178,8 +191,8 @@ class OtpVC: UIViewController {
                         
                         
                         UserDefaults.standard.synchronize()
-                let num = resp.data.otp as! NSNumber
-                    self.mobileno = num.stringValue
+                     let num = resp.data.otp as! NSNumber
+                    self.otpstring = num.stringValue
                         
                     }
                     else
@@ -229,7 +242,12 @@ class OtpVC: UIViewController {
                         
                         if(dic.value(forKey: "error_code") as! Int == 0)
                         {
-                            
+                            for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: PopularPackgesVC.self) {
+                                    self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
                         
                             let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"package booked suceessfully. our agency will shortly contacts you. thank you for booking this package")
                             self.present(alert, animated: true, completion: nil)

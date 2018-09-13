@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 import Alamofire
 class NewLoginVc: UIViewController , UIPickerViewDelegate , UIPickerViewDataSource, UITextFieldDelegate{
   
+    var FromLogin : Int = 0
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var txtcountry: SkyFloatingLabelTextField!
     
@@ -269,7 +270,7 @@ if(txtcountry.text == "")
         toolBar.isTranslucent = true
         toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         var doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(donePicker))
-        
+        doneButton.tintColor = UIColor.red
         var spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
@@ -450,6 +451,7 @@ if(txtcountry.text == "")
                         let num = resp.data.otp as! NSNumber
                         nextViewController.otpstring = num.stringValue
                         nextViewController.islogin = true
+                        nextViewController.FromLogin = self.FromLogin
                         
                         self.navigationController?.pushViewController(nextViewController, animated: true)
                         

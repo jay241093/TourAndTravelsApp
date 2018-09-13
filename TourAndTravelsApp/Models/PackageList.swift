@@ -23,8 +23,8 @@ struct PackageListing: Codable {
     let primaryImage: String
     let agencyID: Int
     let name, mobileName: String
-    let totalDays, totalNights, price, discountPrice: Int
-    let startDate, endDate, cities, description: String?
+    let totalDays, totalNights : Int
+    let discountPrice, price,startDate, endDate, cities, description: String?
     let longDescription, termsConditions, cancellationPolicy: String
     var isFavourite: Bool
     let categories, tags: String
@@ -85,7 +85,7 @@ struct AllCity: Codable {
 struct PackageImage: Codable {
     let id, packageID: Int
     let path: String
-    let createdAt, updatedAt: AtedAt
+    let createdAt, updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -96,11 +96,7 @@ struct PackageImage: Codable {
     }
 }
 
-enum AtedAt: String, Codable {
-    case the20180910130118 = "2018-09-10 13:01:18"
-    case the20180910145722 = "2018-09-10 14:57:22"
-    case the20180911112939 = "2018-09-11 11:29:39"
-}
+
 
 struct PackageIty: Codable {
     let id, day: Int
