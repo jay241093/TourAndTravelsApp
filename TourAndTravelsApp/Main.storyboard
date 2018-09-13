@@ -298,6 +298,7 @@
                                         <rect key="frame" x="8" y="28" width="64" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="WoU-s8-HeQ"/>
+                                            <constraint firstAttribute="height" constant="66" id="zPF-Xa-95x"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgF-85-2Lh">
@@ -331,6 +332,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imgview" destination="A9M-IA-vOX" id="zua-RI-nJ1"/>
                         <outlet property="lblname" destination="LgF-85-2Lh" id="dhF-wM-dz1"/>
                         <outlet property="tblview" destination="vqP-am-1Hn" id="spf-yb-6RG"/>
                     </connections>
@@ -461,6 +463,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveaction:" destination="lYA-BT-emG" eventType="touchUpInside" id="Wft-pl-aEu"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8w0-bX-zIl" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="16" y="407.5" width="288" height="55"/>
@@ -1582,7 +1587,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="xaL-pM-Zo8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <state key="normal" title="View Full itinerary">
+                                                    <state key="normal" title="View Full Iternity">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>

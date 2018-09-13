@@ -77,7 +77,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         pagecontrol.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         headerView.bringSubview(toFront: pagecontrol)
         let str = package?.price
-        lblprice.text =   "Rs \(str!)"
+        lblprice.text =   "\u{20B9} \(str!)"
         
         
         // Do any additional setup after loading the view.
@@ -94,7 +94,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         var url = "http://13.58.57.113/storage/app/" + (package?.packageImages[index].path)!
         
-        cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+        cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         cell.textLabel?.text = ""
@@ -171,12 +171,11 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
      cell.lbldes.text = package?.description
             
             
-        let day = package?.totalDays as! NSNumber
-        let night = package?.totalNights as! NSNumber
+     
 
-            cell.lblDays.text =  night.stringValue + " N" + day.stringValue + " D " 
+            cell.lblDays.text =  (package?.totalDays)! + " N" + (package?.totalNights)! + " D "
    //  let num = package?.price as! NSNumber
-            cell.lblprice.text =  "Rs." + (package?.price)!
+            cell.lblprice.text =  "\u{20B9}" + (package?.price)!
             cell.btnflight.addTarget(self, action: #selector(PackageDetailVC.showflight), for: .touchUpInside)
             cell.btnhotel.addTarget(self, action: #selector(PackageDetailVC.showHotel), for: .touchUpInside)
             if(package?.isFavourite)!
@@ -210,8 +209,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         else if(indexPath.row == 1)
          {
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as!  SearchCityCell
-            let num = package?.totalDays as! NSNumber
-            cell.lblname?.text = "Internity - \(num.stringValue) Days"
+           // let num = package?.totalDays as! NSNumber
+            cell.lblname?.text = "Internity - \(package!.totalDays) Days"
             cell.selectionStyle = .none
 
             return cell
@@ -233,7 +232,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             cell.lbldes.text = package?.packageIty[0].text
             var url = "http://13.58.57.113/storage/app/" + (package?.packageIty[0].imagePath)!
             
-            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             cell.imgview.clipsToBounds = true
             return cell
 
@@ -250,7 +249,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
 
             var url = "http://13.58.57.113/storage/app/" + (package?.packageIty[1].imagePath)!
             
-            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             
             cell.imgview.layer.cornerRadius =  cell.imgview.frame.size.height/2
             cell.lblname.text = package?.packageIty[1].title
@@ -343,7 +342,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
            {
             if(indexPath.row == 10)
            {
-            cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)
+            cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)!
             cell.lblname.text = package?.packageReviews[0].name
             cell.lblcomment.text =  package?.packageReviews[0].text
             
@@ -353,14 +352,14 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             {
                 if(indexPath.row == 10)
                 {
-                    cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)
+                    cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)!
                     cell.lblname.text = package?.packageReviews[0].name
                     cell.lblcomment.text =  package?.packageReviews[0].text
                     
                 }
                 if(indexPath.row == 11)
                 {
-                    cell.ratingview.rating = Float((package?.packageReviews[1].rating)!)
+                    cell.ratingview.rating = Float((package?.packageReviews[1].rating)!)!
                     cell.lblname.text = package?.packageReviews[1].name
                     cell.lblcomment.text =  package?.packageReviews[1].text
                     
@@ -613,7 +612,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     }
     @objc func Shareaction(sender:UIButton)
     {
-        let text = "Package Name: \(package?.name)\n Agency Name: \(package?.agency.name) \n Package Discription: \(package?.description) \n Package Price : \(package?.price!)"
+        let text = "Package Name: \(package?.name)\n Agency Name: \(package?.agency.name) \n Package Discription: \(package?.description) \n Package Price : \(package?.price)"
        
         let shareAll = [text]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)

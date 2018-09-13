@@ -161,7 +161,8 @@ class ReviewPopUp: UIViewController ,UITextViewDelegate , FloatRatingViewDelegat
                             UIAlertAction in
                             
                             self.removeAnimate()
-                            let review = PackageReview(id: (self.newpackage?.packageReviews.count)!+1, packageID:  (self.newpackage?.id)!, rating:  Double(self.ratingview.rating), title: self.txtcomments.text!, text: self.txttitle.text!, name: self.txtname.text!, status: 1, createdAt: "2018-09-11 18:38:23", updatedAt: "2018-09-11 18:38:23")
+                            var num = self.newpackage?.id as! NSNumber
+                            let review = PackageReview(id: (self.newpackage?.packageReviews.count)!+1, packageID:num.stringValue,rating:String(self.ratingview.rating), title: self.txtcomments.text!, text: self.txttitle.text!, name: self.txtname.text!, status: "1", createdAt: "2018-09-11 18:38:23", updatedAt: "2018-09-11 18:38:23")
                             self.newpackage?.packageReviews.append(review)
                             self.delegate?.Addreview(package: self.newpackage!)
                    

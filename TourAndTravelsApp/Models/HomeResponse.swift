@@ -13,6 +13,10 @@
 //
 //   let homeResponse = try? newJSONDecoder().decode(HomeResponse.self, from: jsonData)
 
+// To parse the JSON, add this file to your project and do:
+//
+//   let homeResponse = try? newJSONDecoder().decode(HomeResponse.self, from: jsonData)
+
 import Foundation
 
 struct HomeResponse: Codable {
@@ -40,6 +44,7 @@ struct DataClass3: Codable {
     }
 }
 
+
 struct Offer: Codable {
     let title, code, description, imagePath: String
     
@@ -48,4 +53,3 @@ struct Offer: Codable {
         case imagePath = "image_path"
     }
 }
-

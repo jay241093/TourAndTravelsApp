@@ -455,7 +455,6 @@ if(txtcountry.text == "")
                         
                         self.navigationController?.pushViewController(nextViewController, animated: true)
                         
-                        
                     }
                     else
                     {

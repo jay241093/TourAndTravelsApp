@@ -14,7 +14,7 @@ class ContactUsVC: UIViewController {
     @IBOutlet weak var webview: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        webview.loadRequest(URLRequest(url: URL(string: "http://13.58.57.113/contact")!))
+        webview.loadRequest(URLRequest(url: URL(string:"http://tripgateways.co/contact")!))
 
         if revealViewController() != nil
         {

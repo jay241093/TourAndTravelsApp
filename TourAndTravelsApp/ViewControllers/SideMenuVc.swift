@@ -17,9 +17,17 @@ var sidemenuname = ["Profile" , "My Shortlists"]
     var cells = ["cell2","cell","cell1","cell3","cell4","cell5","cell6"]
 
     @IBOutlet weak var lblname: UILabel!
+    
+    @IBOutlet weak var imgview: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tblview.separatorColor = UIColor.clear
+        imgview.layer.borderWidth=1.0
+        imgview.layer.masksToBounds = false
+        imgview.layer.borderColor = UIColor.white.cgColor
+        imgview.layer.cornerRadius = imgview.frame.size.height/2
+        imgview.clipsToBounds = true
     
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +38,15 @@ var sidemenuname = ["Profile" , "My Shortlists"]
             
             lblname.text = name + " " + lname
             self.tblview.reloadData()
+            
+            if(UserDefaults.standard.object(forKey:"Profilepic") != nil)
+            {
+                var urlnew =  UserDefaults.standard.value(forKey:"Profilepic") as! String
+                var url = "http://13.58.57.113/storage/app/" + urlnew
+
+               imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
+
+            }
         }
     }
     override func didReceiveMemoryWarning() {
@@ -99,8 +116,21 @@ var sidemenuname = ["Profile" , "My Shortlists"]
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+      if(indexPath.row == 4)
+      {
+        let url = URL(string: "itms://itunes.apple.com")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            //If you want handle the completion block than
+            UIApplication.shared.open(url!, options: [:], completionHandler: { (success) in
+                print("Open url : \(success)")
+            })
+        }
+    }
+        
+        
     if(indexPath.row == 3)
-    {  let text = ""
+    {  let text = "TripGateways://"
     
     let shareAll = [text]
     let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)

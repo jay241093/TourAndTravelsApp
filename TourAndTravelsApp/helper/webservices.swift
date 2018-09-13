@@ -11,7 +11,7 @@ import SystemConfiguration
 import PKHUD
 class webservices: NSObject {
 
-    var baseurl =  "http://13.58.57.113/api/"
+    var baseurl =  "http://tripgateways.co/api/"
 
     static let sharedInstance : webservices = {
         let instance = webservices()

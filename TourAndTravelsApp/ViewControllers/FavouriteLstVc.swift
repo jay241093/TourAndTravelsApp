@@ -47,10 +47,10 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
         var urlnew =  dic.primaryImage
         var url = "http://13.58.57.113/storage/app/" + urlnew
 
-        cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+        cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.lbldays.text = String(dic.totalDays) + " Days " + String(dic.totalNights) + " Night"
         cell.lblname.text = dic.name
-        cell.lblprice.text =  "Rs " + (dic.price)!
+        cell.lblprice.text =  "\u{20B9}" + (dic.price)
         setShadow(view: cell.view)
         return cell
     }
@@ -191,6 +191,8 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
         
         }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

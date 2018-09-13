@@ -26,7 +26,7 @@ class ReviewListVC: UIViewController, UITableViewDelegate , UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ReviewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as!  ReviewCell
         cell.selectionStyle = .none
-        cell.ratingview.rating = Float((newpackage?.packageReviews[indexPath.row].rating)!)
+        cell.ratingview.rating = Float((newpackage?.packageReviews[indexPath.row].rating)!)!
         cell.lblname.text = newpackage?.packageReviews[indexPath.row].name
         cell.lblcomment.text =  newpackage?.packageReviews[indexPath.row].text
          cell.lblcomment.sizeToFit()

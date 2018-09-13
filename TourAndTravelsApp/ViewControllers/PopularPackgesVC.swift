@@ -149,9 +149,9 @@ if(isfromlogin == 1)
                 let cell: PopularListCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! PopularListCell
           let dic = hotdeals[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "Rs. \(dic.price!)"
+            cell.lblprice.text = "\u{20B9} \(dic.price)"
             var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
-            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
 
             return cell
@@ -164,9 +164,9 @@ if(isfromlogin == 1)
 
             let dic = featuredpackgeary[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "Rs. \(dic.price!)"
+            cell.lblprice.text = "\u{20B9} \(dic.price)"
             var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
-            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
 
             return cell
@@ -178,11 +178,11 @@ if(isfromlogin == 1)
 
             let dic = popularpackgesary[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "Rs. \(dic.price!)"
+            cell.lblprice.text = "\u{20B9} \(dic.price)"
             var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
             setShadow(view: cell.view)
 
-            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             return cell
 
         }
@@ -192,7 +192,7 @@ if(isfromlogin == 1)
             let dic = Offerary[indexPath.row]
             var url = "http://13.58.57.113/storage/app/" + dic.imagePath
 
-            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+            cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             cell.lblname.text = dic.title
             cell.lbldes.text = dic.description
             cell.lbltag.text = dic.code
@@ -269,7 +269,7 @@ if(isfromlogin == 1)
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         var url = "http://13.58.57.113/storage/app/" + (banners[index])
         
-        cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
+        cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         cell.backgroundView?.backgroundColor = UIColor.clear
@@ -427,3 +427,4 @@ extension PopularPackgesVC: GMSAutocompleteViewControllerDelegate {
     }
     
 }
+

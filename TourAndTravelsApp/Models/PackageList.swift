@@ -4,6 +4,14 @@
 //
 //  Created by Ravi Dubey on 8/29/18.
 //  Copyright © 2018 Ravi Dubey. All rights reserve
+
+
+import Foundation
+
+// To parse the JSON, add this file to your project and do:
+//
+//   let userMeResponse = try? newJSONDecoder().decode(UserMeResponse.self, from: jsonData)
+
 import Foundation
 
 struct PackageList: Codable {
@@ -19,13 +27,11 @@ struct PackageList: Codable {
 }
 
 struct PackageListing: Codable {
-    let id, userID: Int
-    let primaryImage: String
-    let agencyID: Int
-    let name, mobileName: String
-    let totalDays, totalNights : Int
-    let discountPrice, price,startDate, endDate, cities, description: String?
-    let longDescription, termsConditions, cancellationPolicy: String
+    let id: Int
+    let userID, primaryImage, agencyID, name: String
+    let mobileName, totalDays, totalNights, price: String
+    let discountPrice, startDate, endDate, cities: String
+    let description, longDescription, termsConditions, cancellationPolicy: String
     var isFavourite: Bool
     let categories, tags: String
     let packageIty: [PackageIty]
@@ -63,14 +69,35 @@ struct PackageListing: Codable {
 
 struct Agency: Codable {
     let id: Int
-    let name, email: String
+    let name, ownerName, contactPersonName, email: String
+    let designation, mobileNumber, whatsappNumber, website: String
+    let address, branchAddress, description, logo: String
+    let addressProof: String
+    let gstProof, pancardProof: JSONNull?
+    let createdAt, updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case ownerName = "owner_name"
+        case contactPersonName = "contact_person_name"
+        case email, designation
+        case mobileNumber = "mobile_number"
+        case whatsappNumber = "whatsapp_number"
+        case website, address
+        case branchAddress = "branch_address"
+        case description, logo
+        case addressProof = "address_proof"
+        case gstProof = "gst_proof"
+        case pancardProof = "pancard_proof"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
 }
 
 struct AllCity: Codable {
-    let id, packageID: Int
-    let city: String
-    let stayNights: Int
-    let createdAt, updatedAt: String
+    let id: Int
+    let packageID, city, stayNights, createdAt: String
+    let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -83,8 +110,8 @@ struct AllCity: Codable {
 }
 
 struct PackageImage: Codable {
-    let id, packageID: Int
-    let path: String
+    let id: Int
+    let packageID, path: String
     let createdAt, updatedAt: String
     
     enum CodingKeys: String, CodingKey {
@@ -99,9 +126,9 @@ struct PackageImage: Codable {
 
 
 struct PackageIty: Codable {
-    let id, day: Int
-    let title, text, inclusions, imagePath: String
-    let packageID: Int
+    let id: Int
+    let day, title, text, inclusions: String
+    let imagePath, packageID: String
     let hotelID, flightID: String?
     
     enum CodingKeys: String, CodingKey {
@@ -114,11 +141,9 @@ struct PackageIty: Codable {
 }
 
 struct PackageReview: Codable {
-    var id, packageID: Int
-    var rating:Double
-    var title, text, name: String
-    var status: Int
-    var createdAt, updatedAt: String
+    let id: Int
+    let packageID, rating, title, text: String
+    let name, status, createdAt, updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -128,3 +153,5 @@ struct PackageReview: Codable {
         case updatedAt = "updated_at"
     }
 }
+
+// MARK: Encode/decode helpers

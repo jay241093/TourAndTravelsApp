@@ -3,6 +3,11 @@
 //
 //   let userMeResponse = try? newJSONDecoder().decode(UserMeResponse.self, from: jsonData)
 
+
+// To parse the JSON, add this file to your project and do:
+//
+//   let homeResponse = try? newJSONDecoder().decode(HomeResponse.self, from: jsonData)
+
 import Foundation
 
 struct UserMeResponse: Codable {
@@ -27,8 +32,7 @@ struct Details: Codable {
     let email, fname, lname, mobileNumber: String
     let profilePic: String
     let fcmToken: JSONNull?
-    let status: Int
-    let createdAt, updatedAt: String
+    let status, createdAt, updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id, email, fname, lname
@@ -40,6 +44,7 @@ struct Details: Codable {
         case updatedAt = "updated_at"
     }
 }
+
 
 
 // MARK: Encode/decode helpers

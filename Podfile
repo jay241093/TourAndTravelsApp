@@ -8,16 +8,18 @@ target 'TourAndTravelsApp' do
   use_frameworks!
   pod 'SkyFloatingLabelTextField'
   pod "MXParallaxHeader"
-  pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'alamofire5'
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'XLPagerTabStrip'
   pod 'FSPagerView'
    pod 'GooglePlaces'
   pod 'GooglePlacePicker'
-  pod 'SVPinView', '~> 1.0'
    pod 'PKHUD'
+   pod 'SVPinView', '~> 1.0'
+
    pod 'FloatRatingView', '~> 2.0.0'
+   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'alamofire5'
+
 
    
 
@@ -38,6 +40,7 @@ target 'TourAndTravelsApp' do
 
   target 'TourAndTravelsAppTests' do
     inherit! :search_paths
+
     # Pods for testing
   end
 

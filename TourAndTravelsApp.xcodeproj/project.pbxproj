@@ -66,6 +66,7 @@
 		21EDCBE82143D1730006EB58 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EDCBE72143D1730006EB58 /* FavouriteCell.swift */; };
 		21EFCAAF214A469400FFD12C /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EFCAAE214A469400FFD12C /* ContactUsVC.swift */; };
 		21EFCAB4214A47F100FFD12C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EFCAB0214A47ED00FFD12C /* MainVC.swift */; };
+		21EFCAB9214A762300FFD12C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21EFCAB8214A762300FFD12C /* Alamofire.framework */; };
 		9EA11222700F532ABE03168A /* Pods_TourAndTravelsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE755C06097EB1B710441AE /* Pods_TourAndTravelsApp.framework */; };
 		F5072E76DCEBE56128546162 /* Pods_TourAndTravelsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C11EB5BAA7796761378EF2 /* Pods_TourAndTravelsAppUITests.framework */; };
 		F570AF895BCF1AE292ED8491 /* Pods_TourAndTravelsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24AA2E5F0D300671DDDD000 /* Pods_TourAndTravelsAppTests.framework */; };
@@ -158,6 +159,7 @@
 		21EDCBE72143D1730006EB58 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 		21EFCAAE214A469400FFD12C /* ContactUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
 		21EFCAB0214A47ED00FFD12C /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		21EFCAB8214A762300FFD12C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F5364E316CD760975F0CA26 /* Pods-TourAndTravelsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourAndTravelsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TourAndTravelsApp/Pods-TourAndTravelsApp.release.xcconfig"; sourceTree = "<group>"; };
 		40C11EB5BAA7796761378EF2 /* Pods_TourAndTravelsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourAndTravelsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC9F419B03255B64813C395 /* Pods-TourAndTravelsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourAndTravelsAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TourAndTravelsAppUITests/Pods-TourAndTravelsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21EFCAB9214A762300FFD12C /* Alamofire.framework in Frameworks */,
 				9EA11222700F532ABE03168A /* Pods_TourAndTravelsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +381,7 @@
 		C5B1A2220B9F5C84BDFDE089 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21EFCAB8214A762300FFD12C /* Alamofire.framework */,
 				DFE755C06097EB1B710441AE /* Pods_TourAndTravelsApp.framework */,
 				B24AA2E5F0D300671DDDD000 /* Pods_TourAndTravelsAppTests.framework */,
 				40C11EB5BAA7796761378EF2 /* Pods_TourAndTravelsAppUITests.framework */,
@@ -857,7 +861,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5W64V38EUB;
 				INFOPLIST_FILE = TourAndTravelsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -865,8 +870,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.innovius.TourAndTravelsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TripGateways;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "41c501da-ae97-4c2c-aaf8-32089e5b64dc";
+				PROVISIONING_PROFILE_SPECIFIER = TripGateWays;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/ravidubey/Desktop/TourAndTravelsApp/TourAndTravelsApp/helper/TourAndTravelsApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -880,7 +887,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5W64V38EUB;
 				INFOPLIST_FILE = TourAndTravelsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -888,8 +896,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.innovius.TourAndTravelsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TripGateways;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "41c501da-ae97-4c2c-aaf8-32089e5b64dc";
+				PROVISIONING_PROFILE_SPECIFIER = TripGateWays;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/ravidubey/Desktop/TourAndTravelsApp/TourAndTravelsApp/helper/TourAndTravelsApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

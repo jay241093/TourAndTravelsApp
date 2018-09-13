@@ -84,8 +84,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         let dic = packagelist[indexPath.row]
         
         var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
-        cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
-        cell.lbldiscription.text! = dic.description!
+        cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
+        cell.lbldiscription.text! = dic.description
         cell.btnday.setTitle(String(dic.totalNights) + "N " + String(dic.totalDays) + "D " , for: .normal)
         cell.btnday.layer.cornerRadius = 12.0
         cell.btnday.layer.borderWidth = 1
@@ -93,7 +93,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         cell.lblname.text = dic.name
         
         
-        cell.lblprice.text = "Rs " + dic.price!
+        cell.lblprice.text = "\u{20B9}" + dic.price
         cell.btnlike.addTarget(self, action: #selector(FavouriteTap), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
         cell.view.layer.cornerRadius = 10.0
@@ -417,10 +417,6 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
             webservices.sharedInstance.nointernetconnection()
         }
     }
-    
-    
-    
-    
     
     @objc func FilterTapped()
     {

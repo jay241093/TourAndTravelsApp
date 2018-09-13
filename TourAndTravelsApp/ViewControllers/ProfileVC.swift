@@ -24,6 +24,28 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate ,UINavigation
     @IBOutlet weak var viewimage: UIView!
     @IBOutlet weak var btn: UIButton!
     
+    
+    @IBAction func saveaction(_ sender: Any) {
+        
+        
+        if(txtfirstname.text == "")
+        {
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter first name")
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else if(txtfirstname.text == "")
+        {
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter last name")
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else{
+         updateprofile()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showActionSheet))
@@ -120,8 +142,116 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate ,UINavigation
         self.present(actionSheet, animated: true, completion: nil)
         
     }
+
     
-   
+ func updateprofile()
+ {
+    if webservices().isConnectedToNetwork() == true
+    {
+        
+        let token = UserDefaults.standard.value(forKey: "token") as! String
+        let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+        //  print( UserDefaults.standard.value(forKey: "Token") as! String)
+        
+        webservices().StartSpinner()
+        var image4 = UIImageJPEGRepresentation(imgUser.image!, 0.5)!.base64EncodedString(options: .lineLength64Characters)
+
+        Alamofire.request(webservices().baseurl + "customer/updateprofilebase64", method: .post, parameters:["user_id":UserDefaults.standard.value(forKey: "Userid") as! Int, "fname":txtfirstname.text! ,"lname":txtlname.text!,"profile_pic":image4] , encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                webservices().StopSpinner()
+                
+                if let data = response.result.value{
+                    
+                    let dic: NSDictionary = response.result.value as! NSDictionary
+                    
+                    if(dic.value(forKey: "error_code") as! Int == 0)
+                    {
+                        self.UserMeApi()
+                    }
+                    else
+                    {
+                        let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
+                }
+                break
+                
+            case .failure(_):
+                webservices().StopSpinner()
+                
+                print(response.result.error)
+                break
+                
+            }
+        }
+        
+    }
+    else
+    {
+        webservices.sharedInstance.nointernetconnection()
+    }
+    
+    
+    }
+    
+    func UserMeApi()
+    {
+        if(UserDefaults.standard.object(forKey:"Userid") != nil)
+        {
+            
+            if webservices().isConnectedToNetwork() == true
+            {
+                webservices().StartSpinner()
+                let token = UserDefaults.standard.value(forKey: "token") as! String
+                let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+                //  print( UserDefaults.standard.value(forKey: "Token") as! String)
+                
+                
+                Alamofire.request(webservices().baseurl + "customer/me", method: .post, parameters:[:], encoding: JSONEncoding.default, headers: headers).responseJSONDecodable{(response:DataResponse<UserMeResponse>) in
+                    switch response.result{
+                        
+                    case .success(let resp):
+                        print(resp)
+                        if(resp.errorCode == 0)
+                        {
+                            webservices().StopSpinner()
+                        
+                            UserDefaults.standard.set(resp.data.details.fname, forKey: "first")
+                            UserDefaults.standard.set(resp.data.details.fname, forKey: "Last")
+                             UserDefaults.standard.set(resp.data.details.profilePic, forKey:"Profilepic")
+                            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Profile Updated Successfully")
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        else
+                        {
+                            let alert = webservices.sharedInstance.AlertBuilder(title: "", message: resp.message)
+                            self.present(alert, animated: true, completion: nil)
+                            
+                        }
+                        
+                        
+                    case .failure(let err):
+                        webservices().StopSpinner()
+                        
+                        print(err.localizedDescription)
+                    }
+                    
+                }
+            }
+            else
+            {
+                webservices.sharedInstance.nointernetconnection()
+            }
+            
+        }
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
