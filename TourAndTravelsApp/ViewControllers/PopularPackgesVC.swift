@@ -150,7 +150,7 @@ if(isfromlogin == 1)
           let dic = hotdeals[indexPath.row]
             cell.lblname.text = dic.mobileName
             cell.lblprice.text = "\u{20B9} \(dic.price)"
-            var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
 
@@ -165,7 +165,7 @@ if(isfromlogin == 1)
             let dic = featuredpackgeary[indexPath.row]
             cell.lblname.text = dic.mobileName
             cell.lblprice.text = "\u{20B9} \(dic.price)"
-            var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
 
@@ -179,7 +179,7 @@ if(isfromlogin == 1)
             let dic = popularpackgesary[indexPath.row]
             cell.lblname.text = dic.mobileName
             cell.lblprice.text = "\u{20B9} \(dic.price)"
-            var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+            var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             setShadow(view: cell.view)
 
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
@@ -190,7 +190,7 @@ if(isfromlogin == 1)
         {
             let cell: BannerCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! BannerCell
             let dic = Offerary[indexPath.row]
-            var url = "http://13.58.57.113/storage/app/" + dic.imagePath
+            var url = "http://tripgateways.co/storage/app/" + dic.imagePath
 
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             cell.lblname.text = dic.title
@@ -267,7 +267,7 @@ if(isfromlogin == 1)
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        var url = "http://13.58.57.113/storage/app/" + (banners[index])
+        var url = "http://tripgateways.co/storage/app/" + (banners[index])
         
         cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.imageView?.contentMode = .scaleAspectFill

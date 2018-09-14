@@ -42,7 +42,7 @@ var sidemenuname = ["Profile" , "My Shortlists"]
             if(UserDefaults.standard.object(forKey:"Profilepic") != nil)
             {
                 var urlnew =  UserDefaults.standard.value(forKey:"Profilepic") as! String
-                var url = "http://13.58.57.113/storage/app/" + urlnew
+                var url = "http://tripgateways.co/storage/app/" + urlnew
 
                imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
 

@@ -58,6 +58,15 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate ,UINavigation
         imgUser.layer.cornerRadius = imgUser.frame.size.height/2
         imgUser.clipsToBounds = true
         
+        if(UserDefaults.standard.object(forKey:"Profilepic") != nil)
+        {
+            var urlnew =  UserDefaults.standard.value(forKey:"Profilepic") as! String
+            var url = "http://tripgateways.co/storage/app/" + urlnew
+            
+            imgUser.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
+            
+        }
+        
         btnsave.layer.cornerRadius = 18.0
         if revealViewController() != nil
         {
@@ -223,6 +232,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate ,UINavigation
                             UserDefaults.standard.set(resp.data.details.fname, forKey: "first")
                             UserDefaults.standard.set(resp.data.details.fname, forKey: "Last")
                              UserDefaults.standard.set(resp.data.details.profilePic, forKey:"Profilepic")
+                            
+                            self.txtfirstname.text = resp.data.details.fname
+                            self.txtlname.text = resp.data.details.fname
+
+                            
                             let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Profile Updated Successfully")
                             self.present(alert, animated: true, completion: nil)
                         }

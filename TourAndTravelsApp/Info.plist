@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.TripGateways</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.0.1</string>
+	<string>0.0.2</string>
 	<key>FacebookAppID</key>
 	<string>1837933352941498</string>
 	<key>FacebookDisplayName</key>
@@ -50,9 +50,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>TripGateways want to access your photo camera to upload photo</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
+	<string>TripGateways want to access your location to Access your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>TripGateways want to access your location to Access your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>TripGateways want to access your photo gallary to upload photo</string>
 	<key>UILaunchStoryboardName</key>

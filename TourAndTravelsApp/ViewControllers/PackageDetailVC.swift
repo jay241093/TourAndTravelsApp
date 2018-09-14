@@ -68,7 +68,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         tableView.parallaxHeader.height = 250
         tableView.parallaxHeader.mode = MXParallaxHeaderMode.fill
         tableView.parallaxHeader.delegate = self
-       // var url = "http://13.58.57.113/storage/app/" + (package?.packageImages[0].path)!
+       // var url = "http://tripgateways.co/storage/app/" + (package?.packageImages[0].path)!
 
     //imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
 
@@ -92,7 +92,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        var url = "http://13.58.57.113/storage/app/" + (package?.packageImages[index].path)!
+        var url = "http://tripgateways.co/storage/app/" + (package?.packageImages[index].path)!
         
         cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.imageView?.contentMode = .scaleAspectFill
@@ -230,7 +230,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
             cell.lblname.text = package?.packageIty[0].title
             cell.lbldes.text = package?.packageIty[0].text
-            var url = "http://13.58.57.113/storage/app/" + (package?.packageIty[0].imagePath)!
+            var url = "http://tripgateways.co/storage/app/" + (package?.packageIty[0].imagePath)!
             
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             cell.imgview.clipsToBounds = true
@@ -247,7 +247,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             cell.imgview.layer.borderColor = UIColor.white.cgColor
             cell.selectionStyle = .none
 
-            var url = "http://13.58.57.113/storage/app/" + (package?.packageIty[1].imagePath)!
+            var url = "http://tripgateways.co/storage/app/" + (package?.packageIty[1].imagePath)!
             
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             

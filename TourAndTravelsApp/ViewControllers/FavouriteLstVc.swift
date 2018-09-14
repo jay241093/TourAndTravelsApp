@@ -45,7 +45,7 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
         let cell : FavouriteCell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! FavouriteCell
         let dic =  packageList[indexPath.row]
         var urlnew =  dic.primaryImage
-        var url = "http://13.58.57.113/storage/app/" + urlnew
+        var url = "http://tripgateways.co/storage/app/" + urlnew
 
         cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.lbldays.text = String(dic.totalDays) + " Days " + String(dic.totalNights) + " Night"

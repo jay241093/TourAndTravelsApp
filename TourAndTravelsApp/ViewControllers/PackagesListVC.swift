@@ -83,7 +83,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         setShadow(view: cell.view)
         let dic = packagelist[indexPath.row]
         
-        var url = "http://13.58.57.113/storage/app/" + dic.primaryImage
+        var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
         cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
         cell.lbldiscription.text! = dic.description
         cell.btnday.setTitle(String(dic.totalNights) + "N " + String(dic.totalDays) + "D " , for: .normal)
