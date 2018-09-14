@@ -230,11 +230,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate ,UINavigation
                             webservices().StopSpinner()
                         
                             UserDefaults.standard.set(resp.data.details.fname, forKey: "first")
-                            UserDefaults.standard.set(resp.data.details.fname, forKey: "Last")
+                            UserDefaults.standard.set(resp.data.details.lname, forKey: "Last")
                              UserDefaults.standard.set(resp.data.details.profilePic, forKey:"Profilepic")
                             
                             self.txtfirstname.text = resp.data.details.fname
-                            self.txtlname.text = resp.data.details.fname
+                            self.txtlname.text = resp.data.details.lname
 
                             
                             let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Profile Updated Successfully")

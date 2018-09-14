@@ -76,7 +76,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         pagecontrol.contentHorizontalAlignment = .center
         pagecontrol.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         headerView.bringSubview(toFront: pagecontrol)
-        let str = package?.price
+        let str = package?.discountPrice
         lblprice.text =   "\u{20B9} \(str!)"
         
         
@@ -173,9 +173,23 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
      
 
-            cell.lblDays.text =  (package?.totalDays)! + " N" + (package?.totalNights)! + " D "
-   //  let num = package?.price as! NSNumber
-            cell.lblprice.text =  "\u{20B9}" + (package?.price)!
+            cell.lblDays.text =  (package?.totalDays)! + "N " + (package?.totalNights)! + "D "
+            
+            let combination = NSMutableAttributedString()
+
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:"\u{20B9}" + package!.price!)
+            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attributeString.length))
+            let yourOtherAttributes = [kCTForegroundColorAttributeName: UIColor.red, kCTFontAttributeName: UIFont.systemFont(ofSize: 16)]
+            
+            let partTwo = NSMutableAttributedString(string:" \u{20B9}"+(package?.discountPrice)!, attributes: yourOtherAttributes as [NSAttributedStringKey : Any])
+            
+            combination.append(partTwo)
+            combination.append(NSMutableAttributedString(string:"\n"))
+            combination.append(attributeString)
+            
+            
+            cell.lblprice.attributedText = combination
+            
             cell.btnflight.addTarget(self, action: #selector(PackageDetailVC.showflight), for: .touchUpInside)
             cell.btnhotel.addTarget(self, action: #selector(PackageDetailVC.showHotel), for: .touchUpInside)
             if(package?.isFavourite)!
@@ -210,7 +224,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
          {
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as!  SearchCityCell
            // let num = package?.totalDays as! NSNumber
-            cell.lblname?.text = "Internity - \(package!.totalDays) Days"
+            cell.lblname?.text = "Internity - \(package!.totalDays!) Days"
             cell.selectionStyle = .none
 
             return cell

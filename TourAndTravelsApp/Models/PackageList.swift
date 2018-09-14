@@ -29,9 +29,9 @@ struct PackageList: Codable {
 struct PackageListing: Codable {
     let id: Int
     let userID, primaryImage, agencyID, name: String
-    let mobileName, totalDays, totalNights, price: String
-    let discountPrice, startDate, endDate, cities: String
-    let description, longDescription, termsConditions, cancellationPolicy: String
+    let mobileName, totalDays, totalNights, price: String?
+    let discountPrice, startDate, endDate, cities: String?
+    let description, longDescription, termsConditions, cancellationPolicy: String?
     var isFavourite: Bool
     let categories, tags: String
     let packageIty: [PackageIty]
@@ -74,7 +74,7 @@ struct Agency: Codable {
     let address, branchAddress, description, logo: String
     let addressProof: String
     let gstProof, pancardProof: JSONNull?
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -112,7 +112,7 @@ struct AllCity: Codable {
 struct PackageImage: Codable {
     let id: Int
     let packageID, path: String
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -143,7 +143,7 @@ struct PackageIty: Codable {
 struct PackageReview: Codable {
     let id: Int
     let packageID, rating, title, text: String
-    let name, status, createdAt, updatedAt: String
+    let name, status, createdAt, updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
         case id

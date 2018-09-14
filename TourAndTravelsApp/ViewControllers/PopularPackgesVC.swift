@@ -57,10 +57,7 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         autocompleteController.autocompleteFilter?.type = .city
-        autocompleteController.tintColor = UIColor.gray
-        let navigationController = UINavigationController(rootViewController: autocompleteController)
-        navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navigationController, animated: true, completion: nil)
+        self.present(autocompleteController, animated: true, completion: nil)
         
     }
     
@@ -149,7 +146,8 @@ if(isfromlogin == 1)
                 let cell: PopularListCell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! PopularListCell
           let dic = hotdeals[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "\u{20B9} \(dic.price)"
+            cell.lblprice.text = "\u{20B9} \(dic.price!)"
+            cell.lbloptions.text = dic.description
             var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
@@ -164,7 +162,8 @@ if(isfromlogin == 1)
 
             let dic = featuredpackgeary[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "\u{20B9} \(dic.price)"
+            cell.lblprice.text = "\u{20B9} \(dic.price!)"
+            cell.lbloptions.text = dic.description
             var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
@@ -178,7 +177,9 @@ if(isfromlogin == 1)
 
             let dic = popularpackgesary[indexPath.row]
             cell.lblname.text = dic.mobileName
-            cell.lblprice.text = "\u{20B9} \(dic.price)"
+            cell.lblprice.text = "\u{20B9} \(dic.price!)"
+            cell.lbloptions.text = dic.description
+
             var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             setShadow(view: cell.view)
 

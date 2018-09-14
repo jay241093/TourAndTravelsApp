@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/NewLoginVc.swift"
-            timestampString = "558541142.4412481"
+            timestampString = "558598049.355155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "372"
@@ -169,104 +169,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.043407"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "updateprofile()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.0437289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "updateprofile()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.0438631"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "updateprofile()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.043991"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "updateprofile()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044101"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "updateprofile()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044211"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "updateprofile()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/NewLoginVc.swift"
-            timestampString = "558541142.44426"
+            timestampString = "558598049.357397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "379"
@@ -281,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/NewLoginVc.swift"
-            timestampString = "558541142.444327"
+            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
+            timestampString = "558615513.331329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
-            landmarkName = "ApiSedOtp()"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "UserMeApi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -298,23 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044414"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "ProfileVC"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.04453"
+            timestampString = "558615513.331414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -330,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044642"
+            timestampString = "558615513.331481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
@@ -346,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044752"
+            timestampString = "558615513.331539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
@@ -362,27 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044856"
+            timestampString = "558615513.3315949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "UserMeApi()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558596490.044958"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
             landmarkName = "UserMeApi()"
             landmarkType = "7">
          </BreakpointContent>

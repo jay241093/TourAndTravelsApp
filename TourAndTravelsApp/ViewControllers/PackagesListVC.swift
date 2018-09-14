@@ -85,15 +85,27 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         
         var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
         cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
-        cell.lbldiscription.text! = dic.description
-        cell.btnday.setTitle(String(dic.totalNights) + "N " + String(dic.totalDays) + "D " , for: .normal)
+        cell.lbldiscription.text! = dic.description!
+        cell.btnday.setTitle("\(dic.totalNights!)N \(dic.totalDays!)D " , for: .normal)
         cell.btnday.layer.cornerRadius = 12.0
         cell.btnday.layer.borderWidth = 1
          cell.btnday.clipsToBounds = true
         cell.lblname.text = dic.name
         
         
-        cell.lblprice.text = "\u{20B9}" + dic.price
+       // cell.lblprice.text = "\u{20B9}" + dic.price
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:"\u{20B9}" + dic.price!)
+        attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attributeString.length))
+        let combination = NSMutableAttributedString()
+        let yourOtherAttributes = [kCTForegroundColorAttributeName: UIColor.red, kCTFontAttributeName: UIFont.systemFont(ofSize: 16)]
+
+        let partTwo = NSMutableAttributedString(string:"\u{20B9}"+dic.discountPrice!, attributes: yourOtherAttributes as [NSAttributedStringKey : Any])
+
+        combination.append(partTwo)
+        combination.append(NSMutableAttributedString(string:"\n"))
+        combination.append(attributeString)
+          cell.lblprice.attributedText = combination
+        
         cell.btnlike.addTarget(self, action: #selector(FavouriteTap), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
         cell.view.layer.cornerRadius = 10.0
@@ -410,7 +422,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
                     
                 }
             }
-            
+        
         }
         else
         {

@@ -48,9 +48,9 @@ class FavouriteLstVc: UIViewController ,UITableViewDelegate , UITableViewDataSou
         var url = "http://tripgateways.co/storage/app/" + urlnew
 
         cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
-        cell.lbldays.text = String(dic.totalDays) + " Days " + String(dic.totalNights) + " Night"
+        cell.lbldays.text = dic.totalDays! + " Days " + dic.totalNights! + " Night"
         cell.lblname.text = dic.name
-        cell.lblprice.text =  "\u{20B9}" + (dic.price)
+        cell.lblprice.text =  "\u{20B9}" + (dic.price)!
         setShadow(view: cell.view)
         return cell
     }
