@@ -19,8 +19,8 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     var Offerary = [Offer]()
     var isfromlogin: Int = 0
     var banners = [String]()
-
-    
+    var timer :Timer?
+    var count = 0
     @IBOutlet weak var view1: UIView!
     
     @IBOutlet weak var view2: UIView!
@@ -53,7 +53,8 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     
     
     @IBAction func ActionSearch(_ sender: Any) {
-        
+        timer?.invalidate()
+
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         autocompleteController.autocompleteFilter?.type = .city
@@ -63,11 +64,13 @@ class PopularPackgesVC: UIViewController  , UICollectionViewDelegate , UICollect
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+     
         GetPopularPackages()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         if revealViewController() != nil
         {
@@ -150,6 +153,17 @@ if(isfromlogin == 1)
             cell.lbloptions.text = dic.description
             var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
+            
+            let rectShape = CAShapeLayer()
+            rectShape.bounds =  cell.imgview.frame
+            rectShape.position =  cell.imgview.center
+            rectShape.path = UIBezierPath(roundedRect: cell.imgview.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+            
+            //Here I'm masking the textView's layer with rectShape layer
+            cell.imgview.layer.mask = rectShape
+            
+            
+            
             setShadow(view: cell.view)
 
             return cell
@@ -167,6 +181,14 @@ if(isfromlogin == 1)
             var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             setShadow(view: cell.view)
+            let rectShape = CAShapeLayer()
+            rectShape.bounds =  cell.imgview.frame
+            rectShape.position =  cell.imgview.center
+            rectShape.path = UIBezierPath(roundedRect: cell.imgview.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+            
+            //Here I'm masking the textView's layer with rectShape layer
+            cell.imgview.layer.mask = rectShape
+            
 
             return cell
 
@@ -182,6 +204,14 @@ if(isfromlogin == 1)
 
             var url = "http://tripgateways.co/storage/app/" + dic.primaryImage
             setShadow(view: cell.view)
+            let rectShape = CAShapeLayer()
+            rectShape.bounds =  cell.imgview.frame
+            rectShape.position =  cell.imgview.center
+            rectShape.path = UIBezierPath(roundedRect: cell.imgview.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+            
+            //Here I'm masking the textView's layer with rectShape layer
+            cell.imgview.layer.mask = rectShape
+            
 
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
             return cell
@@ -194,11 +224,17 @@ if(isfromlogin == 1)
             var url = "http://tripgateways.co/storage/app/" + dic.imagePath
 
             cell.imgview.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "download-1"))
+            let rectShape = CAShapeLayer()
+            rectShape.bounds =  cell.imgview.frame
+            rectShape.position =  cell.imgview.center
+            rectShape.path = UIBezierPath(roundedRect: cell.imgview.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+            cell.imgview.layer.mask = rectShape
+            cell.view1.layer.cornerRadius = 12.0
+
             cell.lblname.text = dic.title
             cell.lbldes.text = dic.description
             cell.lbltag.text = dic.code
             setShadow(view: cell.view1)
-            cell.view1.layer.cornerRadius = 12.0
             return cell
         }
             
@@ -207,7 +243,7 @@ if(isfromlogin == 1)
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+      timer?.invalidate()
         if(collectionView == collectionview1)
         {
             let dic = hotdeals[indexPath.row]
@@ -320,6 +356,7 @@ if(isfromlogin == 1)
                         self.collectionview3.reloadData()
                         self.collectionview4.reloadData()
                         self.pagerview.reloadData()
+                        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updatescroll), userInfo: nil, repeats: true)
 
 
                     }
@@ -375,6 +412,25 @@ if(isfromlogin == 1)
         {
             webservices.sharedInstance.nointernetconnection()
         }
+    }
+    
+    @objc func updatescroll()
+    {
+    
+     if(count >= banners.count - 1)
+     {
+        
+        pagerview.scrollToItem(at: count, animated: true)
+        count = 0
+
+
+        }
+        else
+     {
+        pagerview.scrollToItem(at: count, animated: true)
+            count = count + 1
+        }
+        
     }
     
     

@@ -70,6 +70,5 @@ class webservices: NSObject {
     func StopSpinner() {
         PKHUD.sharedHUD.hide(true)
     }
-
     
 }

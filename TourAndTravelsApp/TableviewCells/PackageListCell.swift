@@ -20,6 +20,7 @@ class PackageListCell: UITableViewCell {
     
     @IBOutlet weak var lbldiscription: UILabel!
     @IBOutlet weak var lbldays: UILabel!
+    @IBOutlet weak var lblpresentedon: UILabel!
     
     @IBOutlet weak var lblprice: UILabel!
     override func awakeFromNib() {

@@ -14,6 +14,9 @@ class ReviewCell: UITableViewCell {
     
     @IBOutlet weak var lblcomment: UILabel!
     @IBOutlet weak var lblname: UILabel!
+    
+    @IBOutlet weak var hight: NSLayoutConstraint!
+    @IBOutlet weak var btnviewmore: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

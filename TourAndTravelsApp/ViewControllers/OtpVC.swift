@@ -11,7 +11,7 @@ import SVPinView
 import Alamofire
 class OtpVC: UIViewController {
 
-    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var shadowview: UIView!
     @IBOutlet weak var lblmobile: UILabel!
     @IBOutlet weak var pinview: SVPinView!
     
@@ -71,12 +71,12 @@ class OtpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        setShadow(view:shadowview)
+
         lblotp.text = "please Enter Otp sent on  \(mobileno)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         lbltime.text = "00:60"
         
-        setShadow(view:view1)
         
         // Do any additional setup after loading the view.
     }

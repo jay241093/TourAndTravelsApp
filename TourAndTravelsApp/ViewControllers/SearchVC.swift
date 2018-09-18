@@ -30,7 +30,7 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
     var DurationAry = ["1-3 Days","4-7 Days", "8-14 Days", "2-3 Weeks" ,"3+ Weeks"]
     var Durationid = ["1,3","4,7","8,14","14,21","21"]
 
-    var BudgetAry = ["economy","standard", "luxury"]
+    var BudgetAry = ["Economy","Standard", "Luxury"]
     var PricAary = ["< 10000","10001 - 25000", "25001 - 50000" , "> 50000"]
     var Priceid = ["10000","10001,25000","25001,50000","50000"]
     var ThemesAry = [Theme]()
@@ -308,11 +308,11 @@ class SearchVC: UIViewController , UITableViewDelegate , UITableViewDataSource {
         
         if(cell?.checkbox.isChecked)!
         {
-        FinalBudgetAry.add(BudgetAry[indexPath.row])
+        FinalBudgetAry.add(BudgetAry[indexPath.row].lowercased())
         }
         else
         {
-            FinalBudgetAry.remove(BudgetAry[indexPath.row])
+            FinalBudgetAry.remove(BudgetAry[indexPath.row].lowercased())
 
         }
         }

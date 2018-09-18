@@ -78,8 +78,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PackageListCell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! PackageListCell
 
-        if(packagelist.count > 0)
-      {
+      
         setShadow(view: cell.view)
         let dic = packagelist[indexPath.row]
         
@@ -89,22 +88,28 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         cell.btnday.setTitle("\(dic.totalNights!)N \(dic.totalDays!)D " , for: .normal)
         cell.btnday.layer.cornerRadius = 12.0
         cell.btnday.layer.borderWidth = 1
+        cell.btnday.layer.borderColor = UIColor.red.cgColor
          cell.btnday.clipsToBounds = true
-        cell.lblname.text = dic.name
-        
+        cell.lblname.text = dic.mobileName
+        cell.lblpresentedon.text = "Presented by :\(dic.agency.name!)"
         
        // cell.lblprice.text = "\u{20B9}" + dic.price
+        let combination = NSMutableAttributedString()
+        
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:"\u{20B9}" + dic.price!)
         attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attributeString.length))
-        let combination = NSMutableAttributedString()
-        let yourOtherAttributes = [kCTForegroundColorAttributeName: UIColor.red, kCTFontAttributeName: UIFont.systemFont(ofSize: 16)]
-
-        let partTwo = NSMutableAttributedString(string:"\u{20B9}"+dic.discountPrice!, attributes: yourOtherAttributes as [NSAttributedStringKey : Any])
-
-        combination.append(partTwo)
-        combination.append(NSMutableAttributedString(string:"\n"))
+        let yourOtherAttributes1 = [kCTForegroundColorAttributeName: UIColor.darkGray, kCTFontAttributeName: UIFont.systemFont(ofSize: 12)]
+        
+        attributeString.addAttributes(yourOtherAttributes1  as [NSAttributedStringKey : Any], range: NSMakeRange(0, attributeString.length))
+        
+        
+        let yourOtherAttributes = [kCTForegroundColorAttributeName: UIColor.darkGray, kCTFontAttributeName: UIFont.systemFont(ofSize: 16)]
+        
+        let partTwo = NSMutableAttributedString(string:"\u{20B9}"+(dic.discountPrice)!, attributes: yourOtherAttributes as [NSAttributedStringKey : Any])
         combination.append(attributeString)
-          cell.lblprice.attributedText = combination
+        combination.append(NSMutableAttributedString(string:"\n"))
+        combination.append(partTwo)
+        cell.lblprice.attributedText = combination
         
         cell.btnlike.addTarget(self, action: #selector(FavouriteTap), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
@@ -113,8 +118,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         cell.btnlike.layer.cornerRadius = 0.5 * cell.btnlike.bounds.size.width
         cell.btnlike.clipsToBounds = true
         cell.btnlike.layer.borderColor = UIColor.orange.cgColor
-        
-        
+     
         if(UserDefaults.standard.object(forKey:"Userid") != nil)
         {
              cell.btnlike.isEnabled = true
@@ -139,8 +143,9 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
        //  tblheight.constant = tblview.contentSize.height
 
         setShadow(view: cell.view)
-        }
-    return cell
+        return cell
+
+       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -362,7 +367,7 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
 
                         if(resp.data.count == 0)
                         {
-                            let alert = webservices.sharedInstance.AlertBuilder(title: "", message: "No packages found")
+                            let alert = webservices.sharedInstance.AlertBuilder(title: "", message: "No packages found for \(self.cityname)")
                             self.present(alert, animated: true, completion: nil)
                         }
                         else

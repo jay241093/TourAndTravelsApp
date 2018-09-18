@@ -155,8 +155,9 @@ var sidemenuname = ["Profile" , "My Shortlists"]
                     UserDefaults.standard.removeObject(forKey:"token")
                     UserDefaults.standard.removeObject(forKey:"Userid")
                     UserDefaults.standard.synchronize()
-                    self.lblname.text = "User Name"
+                    self.lblname.text = "Welcome"
                     self.tblview.reloadData()
+                    self.imgview.image =  UIImage(named:"default-user")
                     
 
                 }))

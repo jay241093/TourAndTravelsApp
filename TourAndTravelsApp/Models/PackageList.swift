@@ -69,10 +69,10 @@ struct PackageListing: Codable {
 
 struct Agency: Codable {
     let id: Int
-    let name, ownerName, contactPersonName, email: String
-    let designation, mobileNumber, whatsappNumber, website: String
-    let address, branchAddress, description, logo: String
-    let addressProof: String
+    let name, ownerName, contactPersonName, email: String?
+    let designation, mobileNumber, whatsappNumber, website: String?
+    let address, branchAddress, description, logo: String?
+    let addressProof: String?
     let gstProof, pancardProof: JSONNull?
     let createdAt, updatedAt: String?
     

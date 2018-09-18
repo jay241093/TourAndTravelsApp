@@ -100,7 +100,6 @@ var index = 0
             setShadow(view: cell.view)
             cell.lblname.text = globalpackage?.packageIty[index-1].title
             cell.lbldes.text = "Description :" +  (globalpackage?.packageIty[index-1].text)!
-            cell.lbldes.sizeToFit()
 //            var url = "http://tripgateways.co/storage/app/" +  (globalpackage?.packageItinerary[index-1].imagePath)!
 //            cell.imageView?.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "1"))
             var Inclustion = globalpackage?.packageIty[index-1].inclusions as! String

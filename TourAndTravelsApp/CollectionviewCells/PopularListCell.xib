@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="244" height="122"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thaliland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ex-Ze-clo">
-                                <rect key="frame" x="3" y="127" width="83" height="16"/>
+                                <rect key="frame" x="3" y="127" width="88" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="NGV-pI-9rU"/>
                                 </constraints>
@@ -45,9 +45,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting At" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cra-xn-Am9">
-                                <rect key="frame" x="94" y="126" width="66" height="18"/>
+                                <rect key="frame" x="99" y="126" width="70" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="RhW-kc-EEx"/>
+                                    <constraint firstAttribute="width" constant="70" id="RhW-kc-EEx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
@@ -70,8 +70,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs 44,500 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0b-kM-Ou8">
-                                <rect key="frame" x="165" y="124" width="74" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs 44,500 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0b-kM-Ou8">
+                                <rect key="frame" x="170" y="124" width="74" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="Pkb-Zj-b4Y"/>
                                 </constraints>
@@ -87,13 +87,13 @@
                             <constraint firstItem="hdg-X3-O2s" firstAttribute="centerY" secondItem="aTp-ah-TRH" secondAttribute="centerY" id="6DV-YO-ovB"/>
                             <constraint firstItem="Nk7-Rx-zZr" firstAttribute="top" secondItem="zec-0B-fQL" secondAttribute="top" id="6tR-o7-tn6"/>
                             <constraint firstItem="2ex-Ze-clo" firstAttribute="leading" secondItem="zec-0B-fQL" secondAttribute="leading" constant="3" id="Fc2-0r-Twp"/>
-                            <constraint firstItem="S0b-kM-Ou8" firstAttribute="leading" secondItem="cra-xn-Am9" secondAttribute="trailing" constant="5" id="Quf-14-rw6"/>
+                            <constraint firstItem="cra-xn-Am9" firstAttribute="leading" secondItem="2ex-Ze-clo" secondAttribute="trailing" constant="8" id="J6G-nW-mZp"/>
+                            <constraint firstItem="S0b-kM-Ou8" firstAttribute="leading" secondItem="cra-xn-Am9" secondAttribute="trailing" constant="1" id="Quf-14-rw6"/>
                             <constraint firstItem="2ex-Ze-clo" firstAttribute="top" secondItem="Nk7-Rx-zZr" secondAttribute="bottom" constant="5" id="WJd-pg-kSQ"/>
                             <constraint firstItem="Nk7-Rx-zZr" firstAttribute="leading" secondItem="zec-0B-fQL" secondAttribute="leading" id="Wkz-Zh-wAB"/>
-                            <constraint firstItem="S0b-kM-Ou8" firstAttribute="leading" secondItem="2ex-Ze-clo" secondAttribute="trailing" constant="79" id="Y6K-sG-orL"/>
                             <constraint firstAttribute="trailing" secondItem="Nk7-Rx-zZr" secondAttribute="trailing" id="gfA-FH-bjL"/>
                             <constraint firstItem="cra-xn-Am9" firstAttribute="top" secondItem="Nk7-Rx-zZr" secondAttribute="bottom" constant="4" id="i5N-G8-xBc"/>
-                            <constraint firstAttribute="trailing" secondItem="S0b-kM-Ou8" secondAttribute="trailing" constant="5" id="ijz-cj-lyF"/>
+                            <constraint firstAttribute="trailing" secondItem="S0b-kM-Ou8" secondAttribute="trailing" id="ijz-cj-lyF"/>
                             <constraint firstItem="cra-xn-Am9" firstAttribute="baseline" secondItem="S0b-kM-Ou8" secondAttribute="baseline" id="jvQ-Lk-2Ai"/>
                             <constraint firstAttribute="trailing" secondItem="aTp-ah-TRH" secondAttribute="trailing" constant="6" id="l72-4d-y73"/>
                             <constraint firstItem="aTp-ah-TRH" firstAttribute="top" secondItem="S0b-kM-Ou8" secondAttribute="bottom" constant="5" id="leT-FF-IcG"/>
@@ -102,6 +102,11 @@
                             <constraint firstItem="S0b-kM-Ou8" firstAttribute="top" secondItem="Nk7-Rx-zZr" secondAttribute="bottom" constant="2" id="twd-Fe-YqF"/>
                             <constraint firstItem="hdg-X3-O2s" firstAttribute="top" secondItem="cra-xn-Am9" secondAttribute="bottom" constant="9" id="wy3-uf-y2t"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

@@ -24,27 +24,27 @@ class NewSignUpVC: UIViewController {
     @IBAction func SignUPaction(_ sender: Any) {
         if(txtfname.text == "")
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter firstname")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Your Firstname")
             self.present(alert, animated: true, completion: nil)
             
         }
         else if(txtlname.text == "")
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter lastname")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Your Lastname")
             self.present(alert, animated: true, completion: nil)
             
         }
             
         else if(txtemail.text == "")
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter emailaddress")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Your Email")
             self.present(alert, animated: true, completion: nil)
             
         }
             
         else if (!isValidEmail(testStr:txtemail.text!))
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter valid email address")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Valid Email Address")
             self.present(alert, animated: true, completion: nil)
             
         }

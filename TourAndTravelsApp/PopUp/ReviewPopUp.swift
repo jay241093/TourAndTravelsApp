@@ -36,20 +36,20 @@ class ReviewPopUp: UIViewController ,UITextViewDelegate , FloatRatingViewDelegat
         
         if(txtname.text == "")
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter name")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Your Name")
             self.present(alert, animated: true, completion: nil)
             
         }
         else if(txttitle.text == "")
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter review title")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Review Title")
             self.present(alert, animated: true, completion: nil)
             
         }
             
         else if(txtcomments.text == "")
         {
-            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter comments")
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Your Comments")
             self.present(alert, animated: true, completion: nil)
             
         }
@@ -119,9 +119,14 @@ class ReviewPopUp: UIViewController ,UITextViewDelegate , FloatRatingViewDelegat
             }
         });
     }
+    
+   var isfirst = 0
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        txtcomments.text = ""
+        if(isfirst == 0)
+        {
+       isfirst = 1
+    txtcomments.text = ""
+        }
     }
     
     func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Float) {
@@ -162,7 +167,7 @@ class ReviewPopUp: UIViewController ,UITextViewDelegate , FloatRatingViewDelegat
                             
                             self.removeAnimate()
                             var num = self.newpackage?.id as! NSNumber
-                            let review = PackageReview(id: (self.newpackage?.packageReviews.count)!+1, packageID:num.stringValue,rating:String(self.ratingview.rating), title: self.txtcomments.text!, text: self.txttitle.text!, name: self.txtname.text!, status: "1", createdAt: "2018-09-11 18:38:23", updatedAt: "2018-09-11 18:38:23")
+                            let review = PackageReview(id: (self.newpackage?.packageReviews.count)!+1, packageID:num.stringValue,rating:String(self.ratingview.rating), title: self.txttitle.text!, text: self.txtcomments.text!, name: self.txtname.text!, status: "1", createdAt: "2018-09-11 18:38:23", updatedAt: "2018-09-11 18:38:23")
                             self.newpackage?.packageReviews.append(review)
                             self.delegate?.Addreview(package: self.newpackage!)
                    

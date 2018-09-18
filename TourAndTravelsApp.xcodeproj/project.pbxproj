@@ -31,6 +31,7 @@
 		213C7B47213E696A00D34871 /* FulliternityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C7B46213E696A00D34871 /* FulliternityVC.swift */; };
 		213C7B49213E6BC200D34871 /* TableChildExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C7B48213E6BC200D34871 /* TableChildExampleViewController.swift */; };
 		21402A9421427FFE001ED099 /* ThemeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21402A9321427FFE001ED099 /* ThemeList.swift */; };
+		21407A52214FBB6600924AD6 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21407A51214FBB6500924AD6 /* UITextView+Placeholder.m */; };
 		2146638C2136A0B8009D9770 /* PackageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146638B2136A0B8009D9770 /* PackageList.swift */; };
 		214C608621301AA800A7A9D9 /* KTAwesomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 214C608521301AA800A7A9D9 /* KTAwesomeCell.m */; };
 		21672ADD212E795900F1F6C1 /* PackageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21672ADC212E795900F1F6C1 /* PackageDetailVC.swift */; };
@@ -115,6 +116,8 @@
 		213C7B46213E696A00D34871 /* FulliternityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulliternityVC.swift; sourceTree = "<group>"; };
 		213C7B48213E6BC200D34871 /* TableChildExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableChildExampleViewController.swift; sourceTree = "<group>"; };
 		21402A9321427FFE001ED099 /* ThemeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeList.swift; sourceTree = "<group>"; };
+		21407A50214FBB6500924AD6 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		21407A51214FBB6500924AD6 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		2146638B2136A0B8009D9770 /* PackageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageList.swift; sourceTree = "<group>"; };
 		214C608421301AA800A7A9D9 /* KTAwesomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAwesomeCell.h; sourceTree = "<group>"; };
 		214C608521301AA800A7A9D9 /* KTAwesomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAwesomeCell.m; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 		2170680B212BEA760003E665 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				21407A50214FBB6500924AD6 /* UITextView+Placeholder.h */,
+				21407A51214FBB6500924AD6 /* UITextView+Placeholder.m */,
 				2124474521422DCC0002AFF1 /* Checkbox.swift */,
 				214C608421301AA800A7A9D9 /* KTAwesomeCell.h */,
 				214C608521301AA800A7A9D9 /* KTAwesomeCell.m */,
@@ -659,6 +664,7 @@
 				212D31242147EA5100DBA0E1 /* ReviewCell.swift in Sources */,
 				21901F73212D7AB80050DB7C /* PackagesListVC.swift in Sources */,
 				2124474A21423F1D0002AFF1 /* CheckBoxCell.swift in Sources */,
+				21407A52214FBB6600924AD6 /* UITextView+Placeholder.m in Sources */,
 				210EFECF21415BE900B51BF8 /* SearchVC.swift in Sources */,
 				21EDCBE82143D1730006EB58 /* FavouriteCell.swift in Sources */,
 				21ADC6532133D92B006BF58F /* RegisterResponse.swift in Sources */,

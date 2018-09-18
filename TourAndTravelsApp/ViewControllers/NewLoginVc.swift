@@ -31,7 +31,7 @@ if(txtcountry.text == "")
      else if(txtmobileno.text == "")
 
 {
-    let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter MObile Number")
+    let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please Enter Your Mobile Number")
     self.present(alert, animated: true, completion: nil)
     
         }
@@ -262,7 +262,7 @@ if(txtcountry.text == "")
         
     
       
-        self.title = "Authenticate"
+        self.title = "Login"
         setLeftView(textfield: txtcountry)
         setShadow(view: view1)
         var toolBar = UIToolbar()

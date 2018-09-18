@@ -115,7 +115,6 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print(package?.packageReviews.count)
         if(package?.packageReviews.count == 0)
         {
              return 11
@@ -173,19 +172,23 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
      
 
-            cell.lblDays.text =  (package?.totalDays)! + "N " + (package?.totalNights)! + "D "
+            cell.lblDays.text =  (package?.totalNights)! + "N " + (package?.totalDays)! + "D "
             
             let combination = NSMutableAttributedString()
 
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:"\u{20B9}" + package!.price!)
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attributeString.length))
-            let yourOtherAttributes = [kCTForegroundColorAttributeName: UIColor.red, kCTFontAttributeName: UIFont.systemFont(ofSize: 16)]
+            let yourOtherAttributes1 = [kCTForegroundColorAttributeName: UIColor.darkGray, kCTFontAttributeName: UIFont.systemFont(ofSize: 12)]
+
+            attributeString.addAttributes(yourOtherAttributes1  as [NSAttributedStringKey : Any], range: NSMakeRange(0, attributeString.length))
             
-            let partTwo = NSMutableAttributedString(string:" \u{20B9}"+(package?.discountPrice)!, attributes: yourOtherAttributes as [NSAttributedStringKey : Any])
             
-            combination.append(partTwo)
-            combination.append(NSMutableAttributedString(string:"\n"))
+            let yourOtherAttributes = [kCTForegroundColorAttributeName: UIColor.darkGray, kCTFontAttributeName: UIFont.systemFont(ofSize: 16)]
+            
+            let partTwo = NSMutableAttributedString(string:"\u{20B9}"+(package?.discountPrice)!, attributes: yourOtherAttributes as [NSAttributedStringKey : Any])
             combination.append(attributeString)
+            combination.append(NSMutableAttributedString(string:"\n"))
+            combination.append(partTwo)
             
             
             cell.lblprice.attributedText = combination
@@ -211,7 +214,14 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                 cell.btnlike.isEnabled = false
                 
             }
+            cell.lblagencyname.text = "Presented by :\(package!.agency.name!)"
+
             
+            
+//            cell.btnshare.layer.cornerRadius = 0.5 * cell.btnlike.bounds.size.width
+//            cell.btnshare.clipsToBounds = true
+//            cell.btnshare.layer.borderColor = UIColor.orange.cgColor
+//            cell.btnshare.layer.borderWidth = 1.0
              cell.btnlike.tag = indexPath.row
             
             cell.btnlike.addTarget(self, action: #selector(LikeAction), for: .touchUpInside)
@@ -224,7 +234,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
          {
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as!  SearchCityCell
            // let num = package?.totalDays as! NSNumber
-            cell.lblname?.text = "Internity - \(package!.totalDays!) Days"
+            cell.lblname?.text = "Itinerary - \(package!.totalDays!) Days"
             cell.selectionStyle = .none
 
             return cell
@@ -321,7 +331,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             let cell:SearchCityCell = tableView.dequeueReusableCell(withIdentifier: "cell8", for: indexPath) as!  SearchCityCell
             cell.selectionStyle = .none
             cell.btnadd.addTarget(self, action:#selector(AddReview), for: .touchUpInside)
-            cell.btnviewmore.addTarget(self, action:#selector(ViewReview), for: .touchUpInside)
+           // cell.btnviewmore.addTarget(self, action:#selector(ViewReview), for: .touchUpInside)
 
             return cell
         }
@@ -338,7 +348,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
              
             let attributedString = try! NSAttributedString(data: htmlData!, options: options, documentAttributes: nil)
             
-            cell.lbldes.text = attributedString.string
+            cell.lbldes.attributedText = attributedString
             cell.btnreadmore.tag = indexPath.row
             cell.selectionStyle = .none
 
@@ -359,7 +369,8 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)!
             cell.lblname.text = package?.packageReviews[0].name
             cell.lblcomment.text =  package?.packageReviews[0].text
-            
+            cell.hight.constant = 0
+            cell.btnviewmore.isHidden = true
             }
             }
             if((package?.packageReviews.count)! >= 2)
@@ -369,13 +380,21 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
                     cell.ratingview.rating = Float((package?.packageReviews[0].rating)!)!
                     cell.lblname.text = package?.packageReviews[0].name
                     cell.lblcomment.text =  package?.packageReviews[0].text
-                    
+                    cell.hight.constant = 0
+                    cell.btnviewmore.isHidden = true
+                   // cell.btnviewmore.setTitle("", for:.normal)
                 }
                 if(indexPath.row == 11)
                 {
                     cell.ratingview.rating = Float((package?.packageReviews[1].rating)!)!
                     cell.lblname.text = package?.packageReviews[1].name
                     cell.lblcomment.text =  package?.packageReviews[1].text
+                    cell.hight.constant = 24
+                    cell.btnviewmore.isHidden = false
+                    cell.btnviewmore.addTarget(self, action: #selector(viewmore), for: .touchUpInside)
+                    cell.btnviewmore.setTitle("View more", for:.normal)
+
+
                     
                 }
             }
@@ -405,6 +424,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         
         // Present the controller
         self.present(alertController, animated: true, completion: nil)
+        
         
     }
     
@@ -651,7 +671,7 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     }
     
-    @objc func ViewReview(sender:UIButton)
+    @objc func viewmore(sender:UIButton)
         {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             
@@ -669,3 +689,4 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
   
 
 }
+

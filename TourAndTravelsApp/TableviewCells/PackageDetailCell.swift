@@ -24,6 +24,7 @@ class PackageDetailCell: UITableViewCell {
     
     @IBOutlet weak var lblname: UILabel!
     
+    @IBOutlet weak var lblagencyname: UILabel!
     @IBOutlet weak var lbldes: UILabel!
     @IBOutlet weak var lblprice: UILabel!
     
