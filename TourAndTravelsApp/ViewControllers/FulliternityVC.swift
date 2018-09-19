@@ -19,10 +19,6 @@ class FulliternityVC: ButtonBarPagerTabStripViewController {
         buttonBarView.selectedBar.backgroundColor = .white
         buttonBarView.backgroundColor = UIColor(red:1.00, green:0.76, blue:0.03, alpha:1.0)
 
-
-     
-
-        
         let newBackButton = UIBarButtonItem(title: "<Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(FulliternityVC.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         // Do any additional setup after loading the view.

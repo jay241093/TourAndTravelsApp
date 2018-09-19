@@ -89,7 +89,7 @@ var sidemenuname = ["Profile" , "My Shortlists"]
 
             if(UserDefaults.standard.object(forKey:"Userid") != nil)
             {
-                cell.lblsidemenu.text = "LogOut"
+                cell.lblsidemenu.text = "Logout"
                 cell.imgview.image = UIImage(named:"sign-in-alt-solid")
             }
             else

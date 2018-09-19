@@ -56,7 +56,7 @@
                                             <constraint firstAttribute="height" constant="66" id="zPF-Xa-95x"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wlcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgF-85-2Lh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgF-85-2Lh">
                                         <rect key="frame" x="88" y="51" width="132" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="C54-Is-xuR"/>
@@ -1651,6 +1651,7 @@
                                             <outlet property="btnflight" destination="ydH-dv-H1h" id="09P-vh-3hu"/>
                                             <outlet property="btnhotel" destination="XJN-mE-bm1" id="tUa-pi-830"/>
                                             <outlet property="btnlike" destination="mpa-cy-x8b" id="dMq-dM-MK2"/>
+                                            <outlet property="btnreview" destination="nGb-fC-Lbm" id="Di0-dw-GbJ"/>
                                             <outlet property="btnshare" destination="Qzr-V9-aYC" id="yND-ag-1nQ"/>
                                             <outlet property="lblCityStays" destination="tVU-Lt-YdO" id="J9U-0S-hVQ"/>
                                             <outlet property="lblDays" destination="4RQ-A9-3Ia" id="oZW-Qf-oCi"/>
@@ -2635,6 +2636,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="halfRatings" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

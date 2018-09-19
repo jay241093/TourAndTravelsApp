@@ -10,6 +10,9 @@ import UIKit
 
 class PackageDetailCell: UITableViewCell {
 
+    
+    @IBOutlet weak var btnreview: UIButton!
+    
     @IBOutlet weak var lbllocation: UILabel!
     
     @IBOutlet weak var btnshare: UIButton!

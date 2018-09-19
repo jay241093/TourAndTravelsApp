@@ -95,7 +95,9 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         
        // cell.lblprice.text = "\u{20B9}" + dic.price
         let combination = NSMutableAttributedString()
-        
+     
+        if(dic.discountPrice != "")
+        {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:"\u{20B9}" + dic.price!)
         attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attributeString.length))
         let yourOtherAttributes1 = [kCTForegroundColorAttributeName: UIColor.darkGray, kCTFontAttributeName: UIFont.systemFont(ofSize: 12)]
@@ -110,7 +112,11 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
         combination.append(NSMutableAttributedString(string:"\n"))
         combination.append(partTwo)
         cell.lblprice.attributedText = combination
-        
+        }
+        else
+        {
+          cell.lblprice.text = "\u{20B9}" + dic.price!
+        }
         cell.btnlike.addTarget(self, action: #selector(FavouriteTap), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
         cell.view.layer.cornerRadius = 10.0
@@ -121,11 +127,11 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
      
         if(UserDefaults.standard.object(forKey:"Userid") != nil)
         {
-             cell.btnlike.isEnabled = true
+           // cell.btnlike.isEnabled = true
         }
        else
         {
-            cell.btnlike.isEnabled = false
+            //cell.btnlike.isEnabled = false
     
         }
         
@@ -166,6 +172,8 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
     }
     @objc func FavouriteTap(sender:UIButton)
     {
+        if(UserDefaults.standard.object(forKey:"Userid") != nil)
+        {
         let cell = tblview.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PackageListCell
         let dic = packagelist[sender.tag]
 
@@ -177,6 +185,35 @@ class PackagesListVC: UIViewController ,UITableViewDelegate , UITableViewDataSou
        {
       RemoveFavourite(id: dic.id)
         }
+        }
+        else
+        {
+            let alertController = UIAlertController(title: nil, message: "Please login to add to favourite", preferredStyle: .alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NewLoginVc") as! NewLoginVc
+                nextViewController.FromLogin = 1
+
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+                UIAlertAction in
+                NSLog("Cancel Pressed")
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            
+            // Present the controller
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
     }
     
     

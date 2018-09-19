@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558863673.071"
+            timestampString = "559053990.089885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558863673.0710469"
+            timestampString = "559053990.090426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558863673.071089"
+            timestampString = "559053990.090904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558863673.07113"
+            timestampString = "559053990.091346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/ProfileVC.swift"
-            timestampString = "558863673.071171"
+            timestampString = "559053990.091777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.631314"
+            timestampString = "559053990.0922509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -282,12 +282,12 @@
                   moduleName = "TourAndTravelsApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravidubey/Desktop/TourAndTravelsApp/TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-                  timestampString = "558879064.9195679"
+                  timestampString = "559053232.186399"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "376"
-                  endingLineNumber = "376"
-                  offsetFromSymbolStart = "106744">
+                  startingLineNumber = "399"
+                  endingLineNumber = "399"
+                  offsetFromSymbolStart = "124524">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -297,12 +297,12 @@
                   moduleName = "TourAndTravelsApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravidubey/Desktop/TourAndTravelsApp/TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-                  timestampString = "558879064.923048"
+                  timestampString = "559053232.190089"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "376"
-                  endingLineNumber = "376"
-                  offsetFromSymbolStart = "116696">
+                  startingLineNumber = "399"
+                  endingLineNumber = "399"
+                  offsetFromSymbolStart = "133604">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.631385"
+            timestampString = "559053990.0928791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.631449"
+            timestampString = "559053990.093312"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.631513"
+            timestampString = "559053990.0936821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.6315759"
+            timestampString = "559053990.0940419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.6316381"
+            timestampString = "559053990.094406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
-            timestampString = "558882121.631701"
+            timestampString = "559053990.094759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
+            timestampString = "559053990.0951101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
+            timestampString = "559053990.095441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TourAndTravelsApp/ViewControllers/PackageDetailVC.swift"
+            timestampString = "559053990.0957659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>

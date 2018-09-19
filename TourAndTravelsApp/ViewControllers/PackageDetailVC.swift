@@ -77,9 +77,19 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         pagecontrol.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         headerView.bringSubview(toFront: pagecontrol)
         let str = package?.discountPrice
+        let str1 = package?.price
+
+        if(str != "")
+        {
         lblprice.text =   "\u{20B9} \(str!)"
         
+        }
+        else
         
+        {
+            lblprice.text =   "\u{20B9} \(str1!)"
+
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -158,24 +168,38 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
         cell.lbllocation.text = package?.allCities[0].city
        cell.lblexpireOn.text = package?.endDate
         setShadow(view: cell.view1)
+            
         setShadow(view: cell.view2)
             setShadow(view: cell.view3)
            cell.lblDays.layer.masksToBounds = true
 
             cell.lblDays.layer.cornerRadius = 12.0
         cell.lblDays.layer.borderWidth = 1.0
- cell.lblDays.layer.borderColor = UIColor.white.cgColor
+       cell.lblDays.layer.borderColor = UIColor.white.cgColor
 
-   cell.lblname.text = package?.name
-     cell.lbldes.text = package?.description
+        cell.lblname.text = package?.name
+       cell.lbldes.text = package?.description
+
+            let review = package?.packageReviews.count as! NSNumber
+            let finalreview = review.stringValue + " Reviews"
+            let textRange = NSMakeRange(0,finalreview.characters.count)
             
-            
-     
+            var attributes = [NSAttributedStringKey: AnyObject]()
+            attributes[.foregroundColor] = UIColor.red
+
+            let attributedText = NSMutableAttributedString(string: finalreview, attributes: attributes)
+            attributedText.addAttribute(kCTUnderlineStyleAttributeName as NSAttributedStringKey , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+        
+            cell.btnreview.setAttributedTitle(attributedText, for: .normal)
 
             cell.lblDays.text =  (package?.totalNights)! + "N " + (package?.totalDays)! + "D "
             
             let combination = NSMutableAttributedString()
+            cell.btnreview.addTarget(self, action: #selector(viewmore), for: .touchUpInside)
 
+           if(package?.discountPrice != "")
+           {
+            
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:"\u{20B9}" + package!.price!)
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, attributeString.length))
             let yourOtherAttributes1 = [kCTForegroundColorAttributeName: UIColor.darkGray, kCTFontAttributeName: UIFont.systemFont(ofSize: 12)]
@@ -192,7 +216,12 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
             
             cell.lblprice.attributedText = combination
+            }
+            else
             
+           {
+             cell.lblprice.text = "\u{20B9}"+(package?.price)!
+            }
             cell.btnflight.addTarget(self, action: #selector(PackageDetailVC.showflight), for: .touchUpInside)
             cell.btnhotel.addTarget(self, action: #selector(PackageDetailVC.showHotel), for: .touchUpInside)
             if(package?.isFavourite)!
@@ -207,11 +236,11 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
             
             if(UserDefaults.standard.object(forKey:"Userid") != nil)
             {
-                cell.btnlike.isEnabled = true
+               // cell.btnlike.isEnabled = true
             }
             else
             {
-                cell.btnlike.isEnabled = false
+              //  cell.btnlike.isEnabled = false
                 
             }
             cell.lblagencyname.text = "Presented by :\(package!.agency.name!)"
@@ -465,6 +494,11 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
     
     @objc func LikeAction(sender:UIButton)
     {
+        
+        
+        if(UserDefaults.standard.object(forKey:"Userid") != nil)
+        {
+        
         let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PackageDetailCell
       
         if(cell.btnlike.backgroundImage(for: .normal) == #imageLiteral(resourceName: "heart-regular-1"))
@@ -481,6 +515,36 @@ class PackageDetailVC: UIViewController , UITableViewDelegate , UITableViewDataS
 
 
         }
+        }
+        
+        else
+        {
+            let alertController = UIAlertController(title: nil, message: "Please login to add to favourite", preferredStyle: .alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NewLoginVc") as! NewLoginVc
+                nextViewController.FromLogin = 1
+                
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+                
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+                UIAlertAction in
+                NSLog("Cancel Pressed")
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            
+            // Present the controller
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
     }
     
     func AddtoFavourite(id:Int)
